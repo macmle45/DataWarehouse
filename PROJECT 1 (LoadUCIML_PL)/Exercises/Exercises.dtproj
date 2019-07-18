@@ -26,13 +26,14 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DESKTOP-V8DAFTN</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAcL8n6+2t0kie8ht61EcIqgAAAAACAAAAAAAQZgAAAAEAACAAAABRG6wCrWRRW5VUeVd7t2dZx95HozHnsit15F+3ahEGaAAAAAAOgAAAAAIAACAAAAACXjTQo8sCEidDRFdbFILHXla0TmilBXewOtq1sCZ3gZAAAADjiUYxpFiUzxfBC1H+Lml0BuyEF+ydJhcxlJI6+d2d/meEo2Bz+BNyKk4jhxm4TgCmlEyibpiLvI6JauBxuvs+iar70uWRopF9jqJeQvHRhsRWplLw/q6iHxSEHUVh4oqkROUfIYhKe4VngKX/rxPL70HBH++3AAsfzOBOPuP2pt+iZOtCW0hStJX8JysUsPFAAAAA9oVdFBlcVhzljr5wi/Ql3QVyW2/NYEpxfgbYKBgbYLyyRM07A2pPuYjnwMGRjpPUr4vP9OHJzigrr3WMETyn0w==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAcL8n6+2t0kie8ht61EcIqgAAAAACAAAAAAAQZgAAAAEAACAAAADN6mBHjU12oGXdIqWlZZ+AOEklNQ2eSfKqB5th85WMvwAAAAAOgAAAAAIAACAAAAB1suI/CXwRlvpfRPihvk1pgMBgoCQYiLT/8f6iafbUsZAAAAANrD31XiXuP6kG3SNyHbY/vrmGrwW+K+TRjV3NT03CX3RzarFM5s+ACeavnjOIvjm8bus906IoWM6mTPGDyiOv87Bh1v7AgecGJkX+dvXQpOapQLWKmIPE8KzC6W+0qnshvRgpVOn3yJYqhDZcfUJg1wkLOMmPpNNUW7VLCmOidTU5EMRsopOMcos+cQ40Eu5AAAAAb6vYe8sCRJUoz1uN/9Om5vfUgqsAtU08AjlH4XvP3Cndh/NqLR00F1vbs4oBaUx/YBcu7x0uR8pbZdOBJVApoA==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
           <SSIS:Package SSIS:Name="LoadBankData.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="LoadDowJonesIndex.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="LoadWholesaleCustomer.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="MasterExecutePackage.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="BankDataCSV.conmgr" />
@@ -716,6 +717,23 @@
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionGUID">{6E5AF6EC-0E69-446A-8DE2-8D0EA3986D50}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="MasterExecutePackage.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{97926071-A471-45E6-B621-C4A13C18AA53}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">MasterExecutePackage</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{429C728A-DC0D-4E94-A002-9159618161B9}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
