@@ -1,9 +1,9 @@
-# DataWarehouse
+## DataWarehouse
 University projects 
 
-## Datasets used in PROJECT 1
+### Datasets used in PROJECT 1
 
-* Bank Marketing Data Set 
-* Dow Jones Index Data Set 
-* Online Retail Data Set 
+* Bank Marketing DataSet 
+* Dow Jones Index DataSet 
+* Wholesale customers DataSet 
 
