@@ -20,7 +20,7 @@
           DTS:DataType="17"
           DTS:TextQualified="True"
           DTS:ObjectName="Channel"
-          DTS:DTSID="{067EC3EA-7ECE-46B5-AE97-920F81DFBCB9}"
+          DTS:DTSID="{DE21EEF3-64E3-4795-ACF6-E17E28A76747}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -28,7 +28,7 @@
           DTS:DataType="17"
           DTS:TextQualified="True"
           DTS:ObjectName="Region"
-          DTS:DTSID="{C26585BA-825F-479F-BD95-BEADCFE61B96}"
+          DTS:DTSID="{E746D949-1E45-45A0-B75C-31BDE81DC2B9}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -36,7 +36,7 @@
           DTS:DataType="19"
           DTS:TextQualified="True"
           DTS:ObjectName="Fresh"
-          DTS:DTSID="{2001AA55-4286-4019-8DB3-2A574796B607}"
+          DTS:DTSID="{952A373B-9217-47E7-BFDD-0863250CE6F5}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -44,7 +44,7 @@
           DTS:DataType="19"
           DTS:TextQualified="True"
           DTS:ObjectName="Milk"
-          DTS:DTSID="{172E8852-B5AD-494C-96AB-3A40D69EF2F8}"
+          DTS:DTSID="{F734BFD2-3D74-4097-A8C8-925F227BFFF2}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -52,7 +52,7 @@
           DTS:DataType="19"
           DTS:TextQualified="True"
           DTS:ObjectName="Grocery"
-          DTS:DTSID="{CEE8FADD-2D14-41F5-AA68-6979AF800B8D}"
+          DTS:DTSID="{820F83DB-7D7F-450D-B1D0-6446014BFF33}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -60,7 +60,7 @@
           DTS:DataType="19"
           DTS:TextQualified="True"
           DTS:ObjectName="Frozen"
-          DTS:DTSID="{CC154FD0-D797-4CFD-BDD2-4AB311F5EE81}"
+          DTS:DTSID="{F0002F0F-32DD-4C6C-8CF7-19CF665F7127}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -68,7 +68,7 @@
           DTS:DataType="19"
           DTS:TextQualified="True"
           DTS:ObjectName="Detergents_Paper"
-          DTS:DTSID="{86DEFDDC-24FA-489B-BF96-08C0DBFBAEBD}"
+          DTS:DTSID="{4B1DBAE7-5B8B-4955-B0F7-3A34D0CF296C}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -76,7 +76,7 @@
           DTS:DataType="19"
           DTS:TextQualified="True"
           DTS:ObjectName="Delicassen"
-          DTS:DTSID="{0582E273-06FB-430E-94ED-460B3A995F60}"
+          DTS:DTSID="{5A57B3CE-958B-4EDA-BFB7-9CF10CDC61FA}"
           DTS:CreationName="" />
       </DTS:FlatFileColumns>
     </DTS:ConnectionManager>

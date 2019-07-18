@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="LoadDowJonesIndex"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{9D32EA61-B969-4E38-A279-81112BFC001E}">
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{AA34C36B-4B02-4B3C-8BF2-72C44FDC42AA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
