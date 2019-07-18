@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
-  DTS:ObjectName="DowJonesIndexCM"
+  DTS:ObjectName="DowJonesIndexCSV"
   DTS:DTSID="{B1DB53A3-E985-4636-A71E-E30B4E144102}"
   DTS:CreationName="FLATFILE">
   <DTS:ObjectData>

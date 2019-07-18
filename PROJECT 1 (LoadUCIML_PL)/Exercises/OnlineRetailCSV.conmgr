@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
-  DTS:ObjectName="OnlineRetailCM"
+  DTS:ObjectName="OnlineRetailCSV"
   DTS:DTSID="{4F3B4450-2F7D-4236-ABCB-F99E8B50E6DA}"
   DTS:CreationName="EXCEL">
   <DTS:ObjectData>
