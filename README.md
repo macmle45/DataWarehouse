@@ -26,7 +26,7 @@ GO
 CREATE TABLE [LoggingData] 
 	(
 	  [DateOfExectPackg] DATETIME
-	 ,[ExectPackgName] VARCHAR (20)
+	 ,[ExectPackgName] VARCHAR (50)
 	 ,[UserExectPackg] VARCHAR (50)
 	);
 ```
