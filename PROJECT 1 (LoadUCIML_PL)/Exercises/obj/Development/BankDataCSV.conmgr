@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:ObjectName="BankDataCSV"
   DTS:DTSID="{B9F2D2B5-2EA8-4C66-A300-401207470E82}"
