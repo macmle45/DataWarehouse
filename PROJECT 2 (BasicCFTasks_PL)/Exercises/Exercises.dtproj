@@ -26,11 +26,12 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DESKTOP-V8DAFTN</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAcL8n6+2t0kie8ht61EcIqgAAAAACAAAAAAAQZgAAAAEAACAAAAAze1m0svE4JcvcC7CBo63OCk6A+jRexvfthAE/QPrJGAAAAAAOgAAAAAIAACAAAABlvM0XC+Z8cLKna6TLByQPEHL/P+QWoOPQ4XVCIRIzm5AAAADba7QowkBv1moUC5yZtyiWu6kmvXq7EASpGpqdb4Wnklxb5ZSgV706VajaDEdJ2GfSvf0VJ5+AWx9WLNJygio4CbMOtpDLvAcIX2JkZTzD1f1HAYnTwmxwWsTctNL9myyVagoh7Kun8U1yJU3ZuwKyvZ71pB+lFhUzfNGjKB/9HfkLFWCqouoGWZa1kI7MkepAAAAAwwohTo3EgSX2rEfdHZZQ893/1BGnfFcToUyYYLzVXDKHyOZpog+aDNmXlPusjmd1Uo1COJOkObdD1urYzQJN0w==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAcL8n6+2t0kie8ht61EcIqgAAAAACAAAAAAAQZgAAAAEAACAAAACxYOkAZFoqrpddr1V6SFBzatjjIVBjMIETGb2To4mfCAAAAAAOgAAAAAIAACAAAABjhfV2bnRdoAsL1gkDffdnQc0i7t+WVil9MKFzoSuadpAAAADsaXZfLAYIgxZQB7W8TE7GYX9wbH7GXyOMzB4OUECXp8S1LVrWobZItEsyEztQcSh6TeYpxJe8q6hwMtry4DBjJTaSXi369Ayn2te8OD4qxOuwls5BJvsBpeH3V7nMinQOlJ1MovqV7A4vX565erDb6IVOyWECkPEIsIP6UvHQIvEcHM3c72EKGoScnIOHE7pAAAAAKuVkU0wtJ61hQeN+mBRHq0yG76vZ4Z+uFxSU+KkDZvW6jEZBNT8lqydwDOF8v6Tetj/5Q3wkS4Knbo7bnBc12g==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
           <SSIS:Package SSIS:Name="Packg01_LoadVisas.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Packg02_LoadVisasAggregate.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="VisaDB.conmgr" />
@@ -318,6 +319,23 @@
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionGUID">{CDEB014D-21A1-4C7F-8628-298E37AA13F1}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Packg02_LoadVisasAggregate.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{2FA55543-FA4F-4A33-8B68-0D085CA9941A}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Packg02_LoadVisasAggregate</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{99B80EEA-3DE8-41D6-81FD-64A9C445B860}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

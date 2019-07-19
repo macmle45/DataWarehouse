@@ -26,11 +26,12 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DESKTOP-V8DAFTN</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAcL8n6+2t0kie8ht61EcIqgAAAAACAAAAAAAQZgAAAAEAACAAAACOI5dAsxVk5CFRA6c2crlwixhbChez+j0wE7GaNbxAGAAAAAAOgAAAAAIAACAAAAALp4FfrGo/FF78dK9WNUddpwtzVuWD6ZG1AuOkAq26ppAAAAA8W6GpU/RX3ukxdjA0RvXeTlppDCSuh7a/RKX1B4ySfvu69DRE+0uu1itEw/EkSCrFSU+wxXUg22BLMMWT+KKmuT6bLJs8JbQ1n9hGZxGEhbpmoof3hndHRfzq9pQUZpuAB7rKdte9y0w1wNaw3NnKs1uI9FXQSAAmiOoIsJSi0hA+ZBGyTgWxGB7dLM3UwsxAAAAAnPwgQeJVgyvbBY13OakdwPElL+LMbcSPCmQGpzRgqqvAxIlX/FA9MqD5vENcnOo/T8K4DGcg8KpVDisVHGv0jg==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAcL8n6+2t0kie8ht61EcIqgAAAAACAAAAAAAQZgAAAAEAACAAAAD6/FKdOQsN3fbeCjDUHcAK4MtTJizeq/aU07/pDafo+QAAAAAOgAAAAAIAACAAAAC/ur90o4yoHPm6PaJJvi7/37V2MTm8yjfkW7XEizgsPpAAAABaAuvesJIo07KDbvye+bVH8dPDuSppJU/t12QXUrzGmLgSOvC8AmHvfHZYGca8UNYoVVyCoc0JmIe04wPtl6FIqxiNOoNuDli+/r/LtiEXg707WvE26yIM+063qvzrVFqRmTBBSR8hGd/fDYKFeF93Jn9iOrnC9LjksAfS7qnYG9gjPfFQmFPMRzvZselfsb1AAAAAxhAPyPHqWjmaUf/AfpWtM6VWt5JAWxr41QV2k4a9BSD/ilmab6qy6g9f4/kJYdxRRJf95eIeohVxU1F64+OMWg==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
           <SSIS:Package SSIS:Name="Packg01_LoadVisas.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Packg02_LoadVisasAggregate.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="VisaDB.conmgr" />
@@ -327,6 +328,23 @@
               </SSIS:Properties>
               <SSIS:Parameters />
             </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Packg02_LoadVisasAggregate.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{2FA55543-FA4F-4A33-8B68-0D085CA9941A}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Packg02_LoadVisasAggregate</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{99B80EEA-3DE8-41D6-81FD-64A9C445B860}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
           </SSIS:PackageInfo>
         </SSIS:DeploymentInfo>
       </SSIS:Project>
@@ -344,7 +362,13 @@
         <ConnectionSecurityMappings />
         <DatabaseStorageLocations />
         <TargetServerVersion>SQLServer2017</TargetServerVersion>
-        <ParameterConfigurationValues />
+        <ParameterConfigurationValues>
+          <ConfigurationSetting>
+            <Id>LastModifiedTime</Id>
+            <Name>LastModifiedTime</Name>
+            <Value xsi:type="xsd:dateTime">2019-07-19T22:23:18.4932664Z</Value>
+          </ConfigurationSetting>
+        </ParameterConfigurationValues>
       </Options>
     </Configuration>
   </Configurations>
