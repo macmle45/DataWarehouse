@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="MasterExecutePackage"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{429C728A-DC0D-4E94-A002-9159618161B9}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{EFB64B63-61AB-4AE3-AEFE-DEE0D4FA0358}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -173,7 +173,7 @@
           PanelSize="374,276"
           Size="374,319"
           Id="Package\Sequence Container"
-          TopLeft="186,16" />
+          TopLeft="307,86" />
       </GraphLayout>
     </LayoutInfo>
   </Package>

@@ -11,11 +11,21 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="LoadBankData"
   DTS:PackageType="5"
-  DTS:VersionBuild="12"
-  DTS:VersionGUID="{706FCCC8-2205-4CE9-B5D3-D3ED3E8E44C2}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{0DD46419-910D-4BD3-A899-0A769988BFF8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables />
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BE5FF17E-20D1-46F9-B065-B5A0F245916D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="packgNm">
+      <DTS:VariableValue
+        DTS:DataType="8">LoadBankData</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\DFT_LoadBankDataCSV"
@@ -884,6 +894,22 @@
           SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[BankData]&#xA;;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\LoggingData"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{225F808E-4BC6-43B7-91A6-152139C188B6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="LoggingData"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C6CB3A6C-8959-4C6F-A2E5-709218C629C0}"
+          SQLTask:SqlStatementSource="INSERT INTO [dbo].[LoggingData] &#xA;&#x9;([DateOfExectPackg], [UserExectPackg], [ExectPackgName])&#xA;VALUES&#xA;&#x9;(GetDate(), CURRENT_USER, 'packgNm');" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
@@ -894,6 +920,14 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
       DTS:To="Package\DFT_LoadBankDataCSV" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{AAB85ECB-551B-46E8-B992-E35B2B89EF36}"
+      DTS:From="Package\DFT_LoadBankDataCSV"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\LoggingData" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -906,11 +940,11 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="190,42"
           Id="Package\DFT_LoadBankDataCSV"
-          TopLeft="150,180" />
+          TopLeft="150,152" />
         <NodeLayout
           Size="163,42"
           Id="Package\Execute SQL Task"
@@ -921,14 +955,52 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,68"
+              EndConnector="0,40"
               Start="0,0"
-              End="0,60.5">
+              End="0,32.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,60.5" />
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="138,42"
+          Id="Package\LoggingData"
+          TopLeft="188,244" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="245,194">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12,50"
+              Start="0,0"
+              End="12,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21"
+                    Point2="0,25"
+                    Point3="4,25" />
+                  <mssgle:LineSegment
+                    End="8,25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8,25"
+                    Point2="12,25"
+                    Point3="12,29" />
+                  <mssgle:LineSegment
+                    End="12,42.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -946,13 +1018,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="151,42"
-          Id="Package\DFT_LoadBankDataCSV\Flat File Source"
-          TopLeft="320,44" />
-        <NodeLayout
           Size="171,42"
           Id="Package\DFT_LoadBankDataCSV\OLE DB Destination"
           TopLeft="303,181" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\DFT_LoadBankDataCSV\Flat File Source"
+          TopLeft="320,44" />
         <EdgeLayout
           Id="Package\DFT_LoadBankDataCSV.Paths[Flat File Source Output]"
           TopLeft="392,86">

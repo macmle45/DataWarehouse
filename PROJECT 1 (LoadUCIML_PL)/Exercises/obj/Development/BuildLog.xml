@@ -2,13 +2,13 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>Exercises</Name>
-    <LastWriteTime>2019-07-18T22:08:49.8239974Z</LastWriteTime>
+    <LastWriteTime>2019-07-19T01:11:14.6094615Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>LoadBankData.dtsx</Name>
-      <LastWriteTime>2019-07-19T00:02:33.9002291Z</LastWriteTime>
+      <LastWriteTime>2019-07-19T11:56:17.4123806Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -23,7 +23,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>MasterExecutePackage.dtsx</Name>
-      <LastWriteTime>2019-07-18T22:05:02.0316984Z</LastWriteTime>
+      <LastWriteTime>2019-07-19T11:49:49.9840124Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
