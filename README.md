@@ -14,7 +14,14 @@ University projects
 * create database
 
 ```sql
+USE [master]
+GO
+
+IF DB_ID('BusinessDataDB') IS NOT NULL DROP DATABASE BusinessDataDB
+GO
+
 CREATE DATABASE [BusinessDataDB]
+GO
 ```
 
 * create table for logging
@@ -35,3 +42,18 @@ CREATE TABLE [LoggingData]
 ### Used Datasets:
 
 * WizyWydane.csv
+
+### SQL statements
+
+* create database 
+
+```sql
+USE [master]
+GO
+
+IF DB_ID('VisaDB') IS NOT NULL DROP DATABASE VisaDB
+GO
+
+CREATE DATABASE [VisaDB]
+GO
+```
