@@ -30,3 +30,8 @@ CREATE TABLE [LoggingData]
 	 ,[UserExectPackg] VARCHAR (50)
 	);
 ```
+## PROJECT 2
+
+### Used Datasets:
+
+* WizyWydane.csv
