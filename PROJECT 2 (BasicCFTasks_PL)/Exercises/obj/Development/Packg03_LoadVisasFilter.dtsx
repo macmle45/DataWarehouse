@@ -1,0 +1,1034 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/20/2019 1:03:24 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-V8DAFTN"
+  DTS:CreatorName="DESKTOP-V8DAFTN\milkm"
+  DTS:DTSID="{0B36D5EF-F942-4EED-AA84-E670214EA969}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1100.123"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Packg03_LoadVisasFilter"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{5D39AC08-E522-4FCF-9953-24788C39CE84}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT LoadVisasFilter"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{7C0AAEDA-3CF9-48C3-B0ED-CE873891E299}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT LoadVisasFilter"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT LoadVisasFilter\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT LoadVisasFilter\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT LoadVisasFilter\Conditional Split.Inputs[Conditional Split Input].Columns[OSG]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="OSG"
+                      lineageId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[OSG]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT LoadVisasFilter\Conditional Split.Outputs[MOSG]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="MOSG"
+                  synchronousInputId="Package\DFT LoadVisasFilter\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[OSG]} == "MOSG"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">OSG == "MOSG"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT LoadVisasFilter\Conditional Split.Outputs[NOSG]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="NOSG"
+                  synchronousInputId="Package\DFT LoadVisasFilter\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[OSG]} == "NOSG"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">OSG == "NOSG"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT LoadVisasFilter\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\DFT LoadVisasFilter\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT LoadVisasFilter\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\DFT LoadVisasFilter\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT LoadVisasFilter\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT LoadVisasFilter\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT LoadVisasFilter\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT LoadVisasFilter\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT LoadVisasFilter\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1045"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT LoadVisasFilter\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="{506EC756-52AA-403C-B2F1-C66C74F71679}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[VisasIssuedCSV]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[OSG]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[OSG]"
+                      length="50"
+                      lineageId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[OSG]"
+                      name="OSG"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[PSG]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[PSG]"
+                      length="50"
+                      lineageId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[PSG]"
+                      name="PSG"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[Obywatelstwo]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Obywatelstwo]"
+                      length="50"
+                      lineageId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[Obywatelstwo]"
+                      name="Obywatelstwo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[Symbol]"
+                      codePage="1250"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Symbol]"
+                      length="50"
+                      lineageId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[Symbol]"
+                      name="Symbol"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[WydanieWizySchengenZasięgTerytorialnyPaństwaSchengen]"
+                      dataType="ui4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[WydanieWizySchengenZasięgTerytorialnyPaństwaSchengen]"
+                      lineageId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[WydanieWizySchengenZasięgTerytorialnyPaństwaSchengen]"
+                      name="WydanieWizySchengenZasięgTerytorialnyPaństwaSchengen"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[WydanieWizySchengenZasięgTerytorialnyPolska]"
+                      dataType="ui4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[WydanieWizySchengenZasięgTerytorialnyPolska]"
+                      lineageId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[WydanieWizySchengenZasięgTerytorialnyPolska]"
+                      name="WydanieWizySchengenZasięgTerytorialnyPolska"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[ZastąpienieNaklejkiWizowejRodzajWizyVD]"
+                      dataType="ui4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ZastąpienieNaklejkiWizowejRodzajWizyVD]"
+                      lineageId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[ZastąpienieNaklejkiWizowejRodzajWizyVD]"
+                      name="ZastąpienieNaklejkiWizowejRodzajWizyVD"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[ZastąpienieNaklejkiWizowejRodzajWizyVC]"
+                      dataType="ui4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ZastąpienieNaklejkiWizowejRodzajWizyVC]"
+                      lineageId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[ZastąpienieNaklejkiWizowejRodzajWizyVC]"
+                      name="ZastąpienieNaklejkiWizowejRodzajWizyVC"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[OSG]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="OSG" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[PSG]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="PSG" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Obywatelstwo]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="Obywatelstwo" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Symbol]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="Symbol" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[WydanieWizySchengenZasięgTerytorialnyPaństwaSchengen]"
+                      dataType="ui4"
+                      name="WydanieWizySchengenZasięgTerytorialnyPaństwaSchengen" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[WydanieWizySchengenZasięgTerytorialnyPolska]"
+                      dataType="ui4"
+                      name="WydanieWizySchengenZasięgTerytorialnyPolska" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ZastąpienieNaklejkiWizowejRodzajWizyVD]"
+                      dataType="ui4"
+                      name="ZastąpienieNaklejkiWizowejRodzajWizyVD" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ZastąpienieNaklejkiWizowejRodzajWizyVC]"
+                      dataType="ui4"
+                      name="ZastąpienieNaklejkiWizowejRodzajWizyVC" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1250"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB T03_MOSG"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[T03_MOSG]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Connections[OleDbConnection]"
+                  connectionManagerID="{0BA81204-60B9-4988-8AAE-7C79AF3F8264}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[VisaDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Inputs[OLE DB Destination Input].Columns[PSG]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="PSG"
+                      externalMetadataColumnId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Inputs[OLE DB Destination Input].ExternalColumns[PSG]"
+                      lineageId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[PSG]" />
+                    <inputColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Inputs[OLE DB Destination Input].Columns[Obywatelstwo]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Obywatelstwo"
+                      externalMetadataColumnId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Inputs[OLE DB Destination Input].ExternalColumns[Obywatelstwo]"
+                      lineageId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[Obywatelstwo]" />
+                    <inputColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Inputs[OLE DB Destination Input].Columns[Symbol]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Symbol"
+                      externalMetadataColumnId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Inputs[OLE DB Destination Input].ExternalColumns[Symbol]"
+                      lineageId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[Symbol]" />
+                    <inputColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Inputs[OLE DB Destination Input].Columns[WydanieWizySchengenZasięgTerytorialnyPaństwaSchengen]"
+                      cachedDataType="ui4"
+                      cachedName="WydanieWizySchengenZasięgTerytorialnyPaństwaSchengen"
+                      externalMetadataColumnId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Inputs[OLE DB Destination Input].ExternalColumns[WydanieWizySchengenZasięgTerytorialnyPaństwaSchengen]"
+                      lineageId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[WydanieWizySchengenZasięgTerytorialnyPaństwaSchengen]" />
+                    <inputColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Inputs[OLE DB Destination Input].Columns[WydanieWizySchengenZasięgTerytorialnyPolska]"
+                      cachedDataType="ui4"
+                      cachedName="WydanieWizySchengenZasięgTerytorialnyPolska"
+                      externalMetadataColumnId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Inputs[OLE DB Destination Input].ExternalColumns[WydanieWizySchengenZasięgTerytorialnyPolska]"
+                      lineageId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[WydanieWizySchengenZasięgTerytorialnyPolska]" />
+                    <inputColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Inputs[OLE DB Destination Input].Columns[ZastąpienieNaklejkiWizowejRodzajWizyVD]"
+                      cachedDataType="ui4"
+                      cachedName="ZastąpienieNaklejkiWizowejRodzajWizyVD"
+                      externalMetadataColumnId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Inputs[OLE DB Destination Input].ExternalColumns[ZastąpienieNaklejkiWizowejRodzajWizyVD]"
+                      lineageId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[ZastąpienieNaklejkiWizowejRodzajWizyVD]" />
+                    <inputColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Inputs[OLE DB Destination Input].Columns[ZastąpienieNaklejkiWizowejRodzajWizyVC]"
+                      cachedDataType="ui4"
+                      cachedName="ZastąpienieNaklejkiWizowejRodzajWizyVC"
+                      externalMetadataColumnId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Inputs[OLE DB Destination Input].ExternalColumns[ZastąpienieNaklejkiWizowejRodzajWizyVC]"
+                      lineageId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[ZastąpienieNaklejkiWizowejRodzajWizyVC]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Inputs[OLE DB Destination Input].ExternalColumns[PSG]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="PSG" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Inputs[OLE DB Destination Input].ExternalColumns[Obywatelstwo]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="Obywatelstwo" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Inputs[OLE DB Destination Input].ExternalColumns[Symbol]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="Symbol" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Inputs[OLE DB Destination Input].ExternalColumns[WydanieWizySchengenZasięgTerytorialnyPaństwaSchengen]"
+                      dataType="i8"
+                      name="WydanieWizySchengenZasięgTerytorialnyPaństwaSchengen" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Inputs[OLE DB Destination Input].ExternalColumns[WydanieWizySchengenZasięgTerytorialnyPolska]"
+                      dataType="i8"
+                      name="WydanieWizySchengenZasięgTerytorialnyPolska" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Inputs[OLE DB Destination Input].ExternalColumns[ZastąpienieNaklejkiWizowejRodzajWizyVD]"
+                      dataType="i8"
+                      name="ZastąpienieNaklejkiWizowejRodzajWizyVD" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Inputs[OLE DB Destination Input].ExternalColumns[ZastąpienieNaklejkiWizowejRodzajWizyVC]"
+                      dataType="i8"
+                      name="ZastąpienieNaklejkiWizowejRodzajWizyVC" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB T03_NOSG"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[T03_NOSG]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Connections[OleDbConnection]"
+                  connectionManagerID="{0BA81204-60B9-4988-8AAE-7C79AF3F8264}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[VisaDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Inputs[OLE DB Destination Input].Columns[PSG]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="PSG"
+                      externalMetadataColumnId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Inputs[OLE DB Destination Input].ExternalColumns[PSG]"
+                      lineageId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[PSG]" />
+                    <inputColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Inputs[OLE DB Destination Input].Columns[Obywatelstwo]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Obywatelstwo"
+                      externalMetadataColumnId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Inputs[OLE DB Destination Input].ExternalColumns[Obywatelstwo]"
+                      lineageId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[Obywatelstwo]" />
+                    <inputColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Inputs[OLE DB Destination Input].Columns[Symbol]"
+                      cachedCodepage="1250"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Symbol"
+                      externalMetadataColumnId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Inputs[OLE DB Destination Input].ExternalColumns[Symbol]"
+                      lineageId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[Symbol]" />
+                    <inputColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Inputs[OLE DB Destination Input].Columns[WydanieWizySchengenZasięgTerytorialnyPaństwaSchengen]"
+                      cachedDataType="ui4"
+                      cachedName="WydanieWizySchengenZasięgTerytorialnyPaństwaSchengen"
+                      externalMetadataColumnId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Inputs[OLE DB Destination Input].ExternalColumns[WydanieWizySchengenZasięgTerytorialnyPaństwaSchengen]"
+                      lineageId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[WydanieWizySchengenZasięgTerytorialnyPaństwaSchengen]" />
+                    <inputColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Inputs[OLE DB Destination Input].Columns[WydanieWizySchengenZasięgTerytorialnyPolska]"
+                      cachedDataType="ui4"
+                      cachedName="WydanieWizySchengenZasięgTerytorialnyPolska"
+                      externalMetadataColumnId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Inputs[OLE DB Destination Input].ExternalColumns[WydanieWizySchengenZasięgTerytorialnyPolska]"
+                      lineageId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[WydanieWizySchengenZasięgTerytorialnyPolska]" />
+                    <inputColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Inputs[OLE DB Destination Input].Columns[ZastąpienieNaklejkiWizowejRodzajWizyVD]"
+                      cachedDataType="ui4"
+                      cachedName="ZastąpienieNaklejkiWizowejRodzajWizyVD"
+                      externalMetadataColumnId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Inputs[OLE DB Destination Input].ExternalColumns[ZastąpienieNaklejkiWizowejRodzajWizyVD]"
+                      lineageId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[ZastąpienieNaklejkiWizowejRodzajWizyVD]" />
+                    <inputColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Inputs[OLE DB Destination Input].Columns[ZastąpienieNaklejkiWizowejRodzajWizyVC]"
+                      cachedDataType="ui4"
+                      cachedName="ZastąpienieNaklejkiWizowejRodzajWizyVC"
+                      externalMetadataColumnId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Inputs[OLE DB Destination Input].ExternalColumns[ZastąpienieNaklejkiWizowejRodzajWizyVC]"
+                      lineageId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output].Columns[ZastąpienieNaklejkiWizowejRodzajWizyVC]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Inputs[OLE DB Destination Input].ExternalColumns[PSG]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="PSG" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Inputs[OLE DB Destination Input].ExternalColumns[Obywatelstwo]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="Obywatelstwo" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Inputs[OLE DB Destination Input].ExternalColumns[Symbol]"
+                      codePage="1250"
+                      dataType="str"
+                      length="50"
+                      name="Symbol" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Inputs[OLE DB Destination Input].ExternalColumns[WydanieWizySchengenZasięgTerytorialnyPaństwaSchengen]"
+                      dataType="i8"
+                      name="WydanieWizySchengenZasięgTerytorialnyPaństwaSchengen" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Inputs[OLE DB Destination Input].ExternalColumns[WydanieWizySchengenZasięgTerytorialnyPolska]"
+                      dataType="i8"
+                      name="WydanieWizySchengenZasięgTerytorialnyPolska" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Inputs[OLE DB Destination Input].ExternalColumns[ZastąpienieNaklejkiWizowejRodzajWizyVD]"
+                      dataType="i8"
+                      name="ZastąpienieNaklejkiWizowejRodzajWizyVD" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Inputs[OLE DB Destination Input].ExternalColumns[ZastąpienieNaklejkiWizowejRodzajWizyVC]"
+                      dataType="i8"
+                      name="ZastąpienieNaklejkiWizowejRodzajWizyVC" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT LoadVisasFilter.Paths[Flat File Source Output]"
+              endId="Package\DFT LoadVisasFilter\Conditional Split.Inputs[Conditional Split Input]"
+              name="Flat File Source Output"
+              startId="Package\DFT LoadVisasFilter\Flat File Source.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\DFT LoadVisasFilter.Paths[MOSG]"
+              endId="Package\DFT LoadVisasFilter\OLE DB T03_MOSG.Inputs[OLE DB Destination Input]"
+              name="MOSG"
+              startId="Package\DFT LoadVisasFilter\Conditional Split.Outputs[MOSG]" />
+            <path
+              refId="Package\DFT LoadVisasFilter.Paths[NOSG]"
+              endId="Package\DFT LoadVisasFilter\OLE DB T03_NOSG.Inputs[OLE DB Destination Input]"
+              name="NOSG"
+              startId="Package\DFT LoadVisasFilter\Conditional Split.Outputs[NOSG]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{23690160-BC8B-42DF-88AE-9D0FF949233D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0BA81204-60B9-4988-8AAE-7C79AF3F8264}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[T03_MOSG];&#xA;TRUNCATE TABLE [dbo].[T03_NOSG];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{376BA4EE-62DD-4561-9078-20944605C7C1}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DFT LoadVisasFilter" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="307,167" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\DFT LoadVisasFilter"
+          TopLeft="300,284" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="387,209">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,75"
+              Start="0,0"
+              End="0,67.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT LoadVisasFilter">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\DFT LoadVisasFilter\Flat File Source"
+          TopLeft="296,77" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\DFT LoadVisasFilter\Conditional Split"
+          TopLeft="293,171" />
+        <EdgeLayout
+          Id="Package\DFT LoadVisasFilter.Paths[Flat File Source Output]"
+          TopLeft="371,119">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52"
+              Start="0,0"
+              End="0,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171,42"
+          Id="Package\DFT LoadVisasFilter\OLE DB T03_MOSG"
+          TopLeft="155,327" />
+        <NodeLayout
+          Size="169,42"
+          Id="Package\DFT LoadVisasFilter\OLE DB T03_NOSG"
+          TopLeft="396,331" />
+        <EdgeLayout
+          Id="Package\DFT LoadVisasFilter.Paths[NOSG]"
+          TopLeft="395,213">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="85.5,118"
+              Start="0,0"
+              End="85.5,110.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.9233716475096" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,43.9233716475096"
+                    Point2="0,47.9233716475096"
+                    Point3="4,47.9233716475096" />
+                  <mssgle:LineSegment
+                    End="81.5,47.9233716475096" />
+                  <mssgle:CubicBezierSegment
+                    Point1="81.5,47.9233716475096"
+                    Point2="85.5,47.9233716475096"
+                    Point3="85.5,51.9233716475096" />
+                  <mssgle:LineSegment
+                    End="85.5,110.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="29.3605078125,52.9233716475096,26.778984375,9.5732421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT LoadVisasFilter.Paths[MOSG]"
+          TopLeft="346,213">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-105.5,114"
+              Start="0,0"
+              End="-105.5,106.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.2988505747126" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,42.2988505747126"
+                    Point2="0,46.2988505747126"
+                    Point3="-4,46.2988505747126" />
+                  <mssgle:LineSegment
+                    End="-101.5,46.2988505747126" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-101.5,46.2988505747126"
+                    Point2="-105.5,46.2988505747126"
+                    Point3="-105.5,50.2988505747126" />
+                  <mssgle:LineSegment
+                    End="-105.5,106.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-66.6594921875,51.2988505747126,27.818984375,9.5732421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT LoadVisasFilter\OLE DB T03_MOSG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT LoadVisasFilter\OLE DB T03_NOSG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
