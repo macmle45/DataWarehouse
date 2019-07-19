@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DESKTOP-V8DAFTN</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAcL8n6+2t0kie8ht61EcIqgAAAAACAAAAAAAQZgAAAAEAACAAAAAze1m0svE4JcvcC7CBo63OCk6A+jRexvfthAE/QPrJGAAAAAAOgAAAAAIAACAAAABlvM0XC+Z8cLKna6TLByQPEHL/P+QWoOPQ4XVCIRIzm5AAAADba7QowkBv1moUC5yZtyiWu6kmvXq7EASpGpqdb4Wnklxb5ZSgV706VajaDEdJ2GfSvf0VJ5+AWx9WLNJygio4CbMOtpDLvAcIX2JkZTzD1f1HAYnTwmxwWsTctNL9myyVagoh7Kun8U1yJU3ZuwKyvZ71pB+lFhUzfNGjKB/9HfkLFWCqouoGWZa1kI7MkepAAAAAwwohTo3EgSX2rEfdHZZQ893/1BGnfFcToUyYYLzVXDKHyOZpog+aDNmXlPusjmd1Uo1COJOkObdD1urYzQJN0w==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAcL8n6+2t0kie8ht61EcIqgAAAAACAAAAAAAQZgAAAAEAACAAAACOI5dAsxVk5CFRA6c2crlwixhbChez+j0wE7GaNbxAGAAAAAAOgAAAAAIAACAAAAALp4FfrGo/FF78dK9WNUddpwtzVuWD6ZG1AuOkAq26ppAAAAA8W6GpU/RX3ukxdjA0RvXeTlppDCSuh7a/RKX1B4ySfvu69DRE+0uu1itEw/EkSCrFSU+wxXUg22BLMMWT+KKmuT6bLJs8JbQ1n9hGZxGEhbpmoof3hndHRfzq9pQUZpuAB7rKdte9y0w1wNaw3NnKs1uI9FXQSAAmiOoIsJSi0hA+ZBGyTgWxGB7dLM3UwsxAAAAAnPwgQeJVgyvbBY13OakdwPElL+LMbcSPCmQGpzRgqqvAxIlX/FA9MqD5vENcnOo/T8K4DGcg8KpVDisVHGv0jg==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -273,6 +273,8 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">
+                </SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -342,13 +344,7 @@
         <ConnectionSecurityMappings />
         <DatabaseStorageLocations />
         <TargetServerVersion>SQLServer2017</TargetServerVersion>
-        <ParameterConfigurationValues>
-          <ConfigurationSetting>
-            <Id>LastModifiedTime</Id>
-            <Name>LastModifiedTime</Name>
-            <Value xsi:type="xsd:dateTime">2019-07-19T22:23:18.4932664Z</Value>
-          </ConfigurationSetting>
-        </ParameterConfigurationValues>
+        <ParameterConfigurationValues />
       </Options>
     </Configuration>
   </Configurations>
