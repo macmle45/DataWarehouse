@@ -57,3 +57,35 @@ GO
 CREATE DATABASE [VisaDB]
 GO
 ```
+## PROJECT 3
+
+### Used Datasets:
+
+*
+*
+*
+
+### SQL statements
+
+* create database for DimStore
+
+```sql
+USE [master]
+GO
+
+IF DB_ID('StoreDB') IS NOT NULL DROP DATABASE StoreDB
+GO
+
+CREATE DATABASE [StoreDB]
+GO
+```
+
+* create table [DimStoreReload]
+
+```sql
+```
+
+* create table [DimStoreSCD2]
+
+```sql
+```
