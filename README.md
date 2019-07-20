@@ -61,9 +61,9 @@ GO
 
 ### Used Datasets:
 
-*
-*
-*
+* Obszar.csv
+* Pracownik.csv
+* Sklep.csv
 
 ### SQL statements
 
