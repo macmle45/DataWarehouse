@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DESKTOP-V8DAFTN</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAcL8n6+2t0kie8ht61EcIqgAAAAACAAAAAAAQZgAAAAEAACAAAABGOPjV9MrxIWgRpUgAT4DnWlvNSAncfUJ1rQU6V9KX0gAAAAAOgAAAAAIAACAAAACcAU7xms4d9LYck8khi88aXiqpaI3Kwg+1dVTB8NOztJAAAABQOTusOcydWKNSB6IP3IZe6z9Z8bORjt/SSK4rEOtFiovgYa3ltRpRzWD9vh7i4y4wqjZzfDBG8F8NoMwoDCNLDxeTX5tqoHlO3NQJ8NoWaOAsoiGiLt6xGmDdQWy4ZubtUEwquEbFDHVfFjoIBwE4G4JjT/ylpuS0JfcVwiCN8IznFnfw+K+nMbAvqVOu10RAAAAAbWeEfM5IXK5P2la84u0oKDbfhtOmzQO0nZsB7zlDal3ShNWxHvzhJMbuZIm0y+inJiaGAzjuslrclFi1jHu8/w==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAcL8n6+2t0kie8ht61EcIqgAAAAACAAAAAAAQZgAAAAEAACAAAACZtcY/t5w2rjjITBZERrCTIzVo9ZDHLBokDyXvIN3sQQAAAAAOgAAAAAIAACAAAAAiiWbGxLMQYesIzQjbZu4bSxl92RoLfwJ91eoAwj8CKJAAAAA7deu3u40s+/xgon8xl8xRGky1b1NEugOrcxldUol8ldqBN2IbF0z2f7IaPzyKtb+UpfVymlscZLrw2eLfjqoShSaGqV7H6+IquQHSVpONIglGuRZgd9gvGPPh2vYSUngHgruWUmgRqpimF7pkjqbYjm6r7MxNKCbHO1Xg8RqMF2BM+z8FM7oEp8GfTrAijXhAAAAAdqE6XHr6bWno57KRXGLgau8dlG0/T3CYb6t8/QsGm7N1bVo9LoSsV7wqYaheYcPFxjsBmlOFJKfl87vyCAVfPQ==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -34,6 +34,7 @@
           <SSIS:Package SSIS:Name="Packg02_LoadVisasAggregate.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Packg03_LoadVisasFilter.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Packg04_LoadVisasDerivedColumn.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Packg05_LoadVisasMulticast.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="VisaDB.conmgr" />
@@ -368,10 +369,27 @@
                 <SSIS:Property SSIS:Name="Name">Packg04_LoadVisasDerivedColumn</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">4</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{1F98B67E-7650-406E-B647-1E4701867B30}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Packg05_LoadVisasMulticast.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{D5A37A90-432A-4E94-AFDE-F78071595AF4}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Packg05_LoadVisasMulticast</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{ABE32C01-014A-418F-BF18-B988FDEA0E38}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{E62A7D0F-D0F9-46B3-ADA4-E89B6648E217}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

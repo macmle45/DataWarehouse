@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>Exercises</Name>
-    <LastWriteTime>2019-07-20T00:26:25.41773Z</LastWriteTime>
+    <LastWriteTime>2019-07-20T00:49:07.4875233Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -24,6 +24,11 @@
     <ProjectBuildItemInfo>
       <Name>Packg04_LoadVisasDerivedColumn.dtsx</Name>
       <LastWriteTime>2019-07-20T00:31:57.9151091Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Packg05_LoadVisasMulticast.dtsx</Name>
+      <LastWriteTime>2019-07-20T00:49:03.6531608Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
