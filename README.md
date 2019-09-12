@@ -83,6 +83,19 @@ GO
 * create table [DimStoreReload]
 
 ```sql
+CREATE TABLE [DimStoreReload] (
+    [FirstName] varchar(50),
+    [LastName] varchar(50),
+    [Title] varchar(50),
+    [ContinentName] varchar(50),
+    [CityName] varchar(50),
+    [StateProvinceName] varchar(50),
+    [RegionCountryName] varchar(50),
+    [StoreBusinessId] tinyint,
+    [StoreName] varchar(50),
+    [StoreDescription] varchar(50),
+    [Status] varchar(50)
+)
 ```
 
 * create table [DimStoreSCD2]

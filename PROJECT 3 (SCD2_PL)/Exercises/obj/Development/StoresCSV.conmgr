@@ -1,7 +1,7 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
-  DTS:ObjectName="AreasCSV"
-  DTS:DTSID="{2707AD94-5497-4C46-8B9E-326E50106967}"
+  DTS:ObjectName="StoresCSV"
+  DTS:DTSID="{B7390A83-B1D3-4447-8F4E-80224DDED498}"
   DTS:CreationName="FLATFILE">
   <DTS:ObjectData>
     <DTS:ConnectionManager
@@ -12,51 +12,58 @@
       DTS:RowDelimiter=""
       DTS:TextQualifier="_x003C_none_x003E_"
       DTS:CodePage="1250"
-      DTS:ConnectionString="D:\Katalog główny\Studia\ROK II\IV semestr\Hurtownie danych\DataWarehouse\_data\Obszar.csv">
+      DTS:ConnectionString="D:\Katalog główny\Studia\ROK II\IV semestr\Hurtownie danych\DataWarehouse\_data\Sklep.csv">
       <DTS:FlatFileColumns>
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x003B_"
+          DTS:DataType="18"
+          DTS:TextQualified="True"
+          DTS:ObjectName="StoreBusinessId"
+          DTS:DTSID="{BA7E3BB9-D2F7-4568-90F5-2629CA5EAB1E}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x003B_"
+          DTS:MaximumWidth="50"
+          DTS:DataType="129"
+          DTS:TextQualified="True"
+          DTS:ObjectName="StoreName"
+          DTS:DTSID="{809A7334-A36B-4491-84EA-0371231FC78A}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x003B_"
+          DTS:MaximumWidth="50"
+          DTS:DataType="129"
+          DTS:TextQualified="True"
+          DTS:ObjectName="StoreDescription"
+          DTS:DTSID="{CB0F93F6-32A7-40A3-97E9-D0EC3A21654A}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x003B_"
+          DTS:MaximumWidth="50"
+          DTS:DataType="129"
+          DTS:TextQualified="True"
+          DTS:ObjectName="Status"
+          DTS:DTSID="{B4A645DD-D610-4BBB-9051-4842D1D5C31E}"
+          DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
           DTS:ColumnDelimiter="_x003B_"
           DTS:DataType="19"
           DTS:TextQualified="True"
-          DTS:ObjectName="GeographyKey"
-          DTS:DTSID="{F3042BE0-6B7E-4823-90BB-765DBE05DC45}"
-          DTS:CreationName="" />
-        <DTS:FlatFileColumn
-          DTS:ColumnType="Delimited"
-          DTS:ColumnDelimiter="_x003B_"
-          DTS:MaximumWidth="50"
-          DTS:DataType="129"
-          DTS:TextQualified="True"
-          DTS:ObjectName="ContinentName"
-          DTS:DTSID="{C47A550B-CEC4-4E24-BF42-1D008F81B574}"
-          DTS:CreationName="" />
-        <DTS:FlatFileColumn
-          DTS:ColumnType="Delimited"
-          DTS:ColumnDelimiter="_x003B_"
-          DTS:MaximumWidth="50"
-          DTS:DataType="129"
-          DTS:TextQualified="True"
-          DTS:ObjectName="CityName"
-          DTS:DTSID="{2F2D23B0-719B-455E-B355-F90A0F393973}"
-          DTS:CreationName="" />
-        <DTS:FlatFileColumn
-          DTS:ColumnType="Delimited"
-          DTS:ColumnDelimiter="_x003B_"
-          DTS:MaximumWidth="50"
-          DTS:DataType="129"
-          DTS:TextQualified="True"
-          DTS:ObjectName="StateProvinceName"
-          DTS:DTSID="{BF341195-6E8C-4AAC-B87B-31079C9B93A9}"
+          DTS:ObjectName="ManagerKey"
+          DTS:DTSID="{EFB85FA3-AA28-4326-A9B2-48614F464DA0}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
           DTS:ColumnDelimiter="_x000D__x000A_"
-          DTS:MaximumWidth="50"
-          DTS:DataType="129"
+          DTS:DataType="19"
           DTS:TextQualified="True"
-          DTS:ObjectName="RegionCountryName"
-          DTS:DTSID="{2342B898-16FE-4680-9586-5330D2DE7E86}"
+          DTS:ObjectName="GeographyKey"
+          DTS:DTSID="{070229E1-C980-48D6-B895-6CFA183340B9}"
           DTS:CreationName="" />
       </DTS:FlatFileColumns>
     </DTS:ConnectionManager>

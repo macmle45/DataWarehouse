@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Packg01_LoadVisas"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{CDEB014D-21A1-4C7F-8628-298E37AA13F1}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{583A9E6D-AAA5-46FB-99CC-EE1946FA175C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -554,13 +554,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="163,42"
-          Id="Package\Execute SQL Task"
-          TopLeft="310,110" />
-        <NodeLayout
           Size="179,42"
           Id="Package\DFT LoadVisasIssued"
           TopLeft="312,226" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="310,110" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="391.5,152">

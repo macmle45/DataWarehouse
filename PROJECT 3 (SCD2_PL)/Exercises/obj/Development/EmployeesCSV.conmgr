@@ -1,7 +1,7 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
-  DTS:ObjectName="AreasCSV"
-  DTS:DTSID="{2707AD94-5497-4C46-8B9E-326E50106967}"
+  DTS:ObjectName="EmployeesCSV"
+  DTS:DTSID="{DC9AA0DF-8553-407F-8470-F178D8000DCD}"
   DTS:CreationName="FLATFILE">
   <DTS:ObjectData>
     <DTS:ConnectionManager
@@ -12,15 +12,15 @@
       DTS:RowDelimiter=""
       DTS:TextQualifier="_x003C_none_x003E_"
       DTS:CodePage="1250"
-      DTS:ConnectionString="D:\Katalog główny\Studia\ROK II\IV semestr\Hurtownie danych\DataWarehouse\_data\Obszar.csv">
+      DTS:ConnectionString="D:\Katalog główny\Studia\ROK II\IV semestr\Hurtownie danych\DataWarehouse\_data\Pracownik.csv">
       <DTS:FlatFileColumns>
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
           DTS:ColumnDelimiter="_x003B_"
           DTS:DataType="19"
           DTS:TextQualified="True"
-          DTS:ObjectName="GeographyKey"
-          DTS:DTSID="{F3042BE0-6B7E-4823-90BB-765DBE05DC45}"
+          DTS:ObjectName="EmployeeKey"
+          DTS:DTSID="{36F195A3-F17E-4B91-B3E2-59C2834FF085}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -28,8 +28,8 @@
           DTS:MaximumWidth="50"
           DTS:DataType="129"
           DTS:TextQualified="True"
-          DTS:ObjectName="ContinentName"
-          DTS:DTSID="{C47A550B-CEC4-4E24-BF42-1D008F81B574}"
+          DTS:ObjectName="FirstName"
+          DTS:DTSID="{DE916653-5E3F-4DE4-BE39-19D2D9B3F369}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -37,17 +37,8 @@
           DTS:MaximumWidth="50"
           DTS:DataType="129"
           DTS:TextQualified="True"
-          DTS:ObjectName="CityName"
-          DTS:DTSID="{2F2D23B0-719B-455E-B355-F90A0F393973}"
-          DTS:CreationName="" />
-        <DTS:FlatFileColumn
-          DTS:ColumnType="Delimited"
-          DTS:ColumnDelimiter="_x003B_"
-          DTS:MaximumWidth="50"
-          DTS:DataType="129"
-          DTS:TextQualified="True"
-          DTS:ObjectName="StateProvinceName"
-          DTS:DTSID="{BF341195-6E8C-4AAC-B87B-31079C9B93A9}"
+          DTS:ObjectName="LastName"
+          DTS:DTSID="{47C12D40-5E10-406E-8BBF-4433485FEC09}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -55,8 +46,8 @@
           DTS:MaximumWidth="50"
           DTS:DataType="129"
           DTS:TextQualified="True"
-          DTS:ObjectName="RegionCountryName"
-          DTS:DTSID="{2342B898-16FE-4680-9586-5330D2DE7E86}"
+          DTS:ObjectName="Title"
+          DTS:DTSID="{17254B41-41F8-4807-94C7-989A337DDBF7}"
           DTS:CreationName="" />
       </DTS:FlatFileColumns>
     </DTS:ConnectionManager>
