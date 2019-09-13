@@ -83,7 +83,11 @@ GO
 * create table [DimStoreReload]
 
 ```sql
+USE [StoreDB]
+GO
+
 CREATE TABLE [DimStoreReload] (
+    [StoreKey] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
     [FirstName] varchar(50),
     [LastName] varchar(50),
     [Title] varchar(50),
@@ -91,14 +95,20 @@ CREATE TABLE [DimStoreReload] (
     [CityName] varchar(50),
     [StateProvinceName] varchar(50),
     [RegionCountryName] varchar(50),
-    [StoreBusinessId] tinyint,
+    [StoreBusinessId] int,
     [StoreName] varchar(50),
     [StoreDescription] varchar(50),
-    [Status] varchar(50)
+    [Status] varchar(50),
+	[LoadDate]  datetime NULL DEFAULT (GETDATE()),
+	[LoadUser] varchar (100) NULL DEFAULT (SUSER_SNAME())
 )
 ```
 
 * create table [DimStoreSCD2]
 
 ```sql
+USE [StoreDB]
+GO
+
+
 ```

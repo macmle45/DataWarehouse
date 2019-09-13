@@ -2,13 +2,18 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>Exercises</Name>
-    <LastWriteTime>2019-07-20T17:52:01.2989345Z</LastWriteTime>
+    <LastWriteTime>2019-09-12T21:23:53.9129584Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
-      <Name>LoadDimStore.dtsx</Name>
-      <LastWriteTime>2019-09-12T17:51:48.9319259Z</LastWriteTime>
+      <Name>01_LoadDimStore.dtsx</Name>
+      <LastWriteTime>2019-09-13T00:00:57.3326538Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>02_LoadDimStoreSCD2.dtsx</Name>
+      <LastWriteTime>2019-09-12T22:13:55.3359356Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

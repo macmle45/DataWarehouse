@@ -1,30 +1,30 @@
 ﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="7/20/2019 3:51:15 PM"
+  DTS:CreationDate="9/12/2019 11:11:12 PM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-V8DAFTN"
   DTS:CreatorName="DESKTOP-V8DAFTN\milkm"
-  DTS:DTSID="{C2A20407-DC93-4971-A8D6-F36A422F0268}"
+  DTS:DTSID="{374041B7-B950-4782-8324-5F814E3F50C4}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.1100.123"
   DTS:LocaleID="1033"
-  DTS:ObjectName="01_LoadDimStore"
+  DTS:ObjectName="02_LoadDimStoreSCD2"
   DTS:PackageType="5"
-  DTS:VersionBuild="26"
-  DTS:VersionGUID="{85A95CAD-1708-4B68-BFDA-9C8C7D6BD3CF}">
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{9EBDBF15-6C06-488F-9A54-DDB4AD969516}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\DFT LoadDimStore"
+      DTS:refId="Package\Data Flow Task"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{10CD69C9-1331-4F61-821C-B556BD8F9B7C}"
+      DTS:DTSID="{6B93A444-21EC-431B-9956-3E3C25B4BA39}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="DFT LoadDimStore"
+      DTS:ObjectName="Data Flow Task"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -32,7 +32,94 @@
           version="1">
           <components>
             <component
-              refId="Package\DFT LoadDimStore\FFS Area"
+              refId="Package\Data Flow Task\DimStore_CurrentData"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="DimStore_CurrentData"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT *
+FROM [dbo].[DimStoreSCD2]
+WHERE [DateTo] IS NULL</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\DimStore_CurrentData.Connections[OleDbConnection]"
+                  connectionManagerID="{1F18207F-3849-472F-916E-0F86601DA6C4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[StoreDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\DimStore_CurrentData.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <externalMetadataColumns
+                    isUsed="True" />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\DimStore_CurrentData.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\DimStore_CurrentData.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DimStore_CurrentData.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DimStore_CurrentData.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DimStore_CurrentData.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\FFS Area"
               componentClassID="Microsoft.FlatFileSource"
               contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Flat File Source"
@@ -52,23 +139,23 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT LoadDimStore\FFS Area.Connections[FlatFileConnection]"
+                  refId="Package\Data Flow Task\FFS Area.Connections[FlatFileConnection]"
                   connectionManagerID="{2707AD94-5497-4C46-8B9E-326E50106967}:external"
                   connectionManagerRefId="Project.ConnectionManagers[AreasCSV]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
                 <output
-                  refId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output]"
+                  refId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output]"
                   name="Flat File Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].Columns[GeographyKey]"
+                      refId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].Columns[GeographyKey]"
                       dataType="ui4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].ExternalColumns[GeographyKey]"
-                      lineageId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].Columns[GeographyKey]"
+                      externalMetadataColumnId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].ExternalColumns[GeographyKey]"
+                      lineageId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].Columns[GeographyKey]"
                       name="GeographyKey"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -83,14 +170,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].Columns[ContinentName]"
+                      refId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].Columns[ContinentName]"
                       codePage="1250"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].ExternalColumns[ContinentName]"
+                      externalMetadataColumnId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].ExternalColumns[ContinentName]"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].Columns[ContinentName]"
+                      lineageId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].Columns[ContinentName]"
                       name="ContinentName"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -105,14 +192,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].Columns[CityName]"
+                      refId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].Columns[CityName]"
                       codePage="1250"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].ExternalColumns[CityName]"
+                      externalMetadataColumnId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].ExternalColumns[CityName]"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].Columns[CityName]"
+                      lineageId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].Columns[CityName]"
                       name="CityName"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -127,14 +214,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].Columns[StateProvinceName]"
+                      refId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].Columns[StateProvinceName]"
                       codePage="1250"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].ExternalColumns[StateProvinceName]"
+                      externalMetadataColumnId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].ExternalColumns[StateProvinceName]"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].Columns[StateProvinceName]"
+                      lineageId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].Columns[StateProvinceName]"
                       name="StateProvinceName"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -149,14 +236,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].Columns[RegionCountryName]"
+                      refId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].Columns[RegionCountryName]"
                       codePage="1250"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].ExternalColumns[RegionCountryName]"
+                      externalMetadataColumnId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].ExternalColumns[RegionCountryName]"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].Columns[RegionCountryName]"
+                      lineageId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].Columns[RegionCountryName]"
                       name="RegionCountryName"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -174,29 +261,29 @@
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].ExternalColumns[GeographyKey]"
+                      refId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].ExternalColumns[GeographyKey]"
                       dataType="ui4"
                       name="GeographyKey" />
                     <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].ExternalColumns[ContinentName]"
+                      refId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].ExternalColumns[ContinentName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
                       name="ContinentName" />
                     <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].ExternalColumns[CityName]"
+                      refId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].ExternalColumns[CityName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
                       name="CityName" />
                     <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].ExternalColumns[StateProvinceName]"
+                      refId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].ExternalColumns[StateProvinceName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
                       name="StateProvinceName" />
                     <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].ExternalColumns[RegionCountryName]"
+                      refId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].ExternalColumns[RegionCountryName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
@@ -204,27 +291,27 @@
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Error Output]"
+                  refId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Error Output]"
                   isErrorOut="true"
                   name="Flat File Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      refId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                       codePage="1250"
                       dataType="text"
                       description="Flat File Source Error Output Column"
-                      lineageId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      lineageId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                       name="Flat File Source Error Output Column" />
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -233,7 +320,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\DFT LoadDimStore\FFS Employee"
+              refId="Package\Data Flow Task\FFS Employee"
               componentClassID="Microsoft.FlatFileSource"
               contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Flat File Source"
@@ -253,23 +340,23 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT LoadDimStore\FFS Employee.Connections[FlatFileConnection]"
+                  refId="Package\Data Flow Task\FFS Employee.Connections[FlatFileConnection]"
                   connectionManagerID="{DC9AA0DF-8553-407F-8470-F178D8000DCD}:external"
                   connectionManagerRefId="Project.ConnectionManagers[EmployeesCSV]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
                 <output
-                  refId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Output]"
+                  refId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Output]"
                   name="Flat File Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Output].Columns[EmployeeKey]"
+                      refId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Output].Columns[EmployeeKey]"
                       dataType="ui4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Output].ExternalColumns[EmployeeKey]"
-                      lineageId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Output].Columns[EmployeeKey]"
+                      externalMetadataColumnId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Output].ExternalColumns[EmployeeKey]"
+                      lineageId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Output].Columns[EmployeeKey]"
                       name="EmployeeKey"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -284,14 +371,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Output].Columns[FirstName]"
+                      refId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Output].Columns[FirstName]"
                       codePage="1250"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Output].ExternalColumns[FirstName]"
+                      externalMetadataColumnId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Output].ExternalColumns[FirstName]"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Output].Columns[FirstName]"
+                      lineageId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Output].Columns[FirstName]"
                       name="FirstName"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -306,14 +393,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Output].Columns[LastName]"
+                      refId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Output].Columns[LastName]"
                       codePage="1250"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Output].ExternalColumns[LastName]"
+                      externalMetadataColumnId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Output].ExternalColumns[LastName]"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Output].Columns[LastName]"
+                      lineageId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Output].Columns[LastName]"
                       name="LastName"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -328,14 +415,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Output].Columns[Title]"
+                      refId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Output].Columns[Title]"
                       codePage="1250"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Output].ExternalColumns[Title]"
+                      externalMetadataColumnId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Output].ExternalColumns[Title]"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Output].Columns[Title]"
+                      lineageId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Output].Columns[Title]"
                       name="Title"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -353,23 +440,23 @@
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Output].ExternalColumns[EmployeeKey]"
+                      refId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Output].ExternalColumns[EmployeeKey]"
                       dataType="ui4"
                       name="EmployeeKey" />
                     <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Output].ExternalColumns[FirstName]"
+                      refId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Output].ExternalColumns[FirstName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
                       name="FirstName" />
                     <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Output].ExternalColumns[LastName]"
+                      refId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Output].ExternalColumns[LastName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
                       name="LastName" />
                     <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Output].ExternalColumns[Title]"
+                      refId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Output].ExternalColumns[Title]"
                       codePage="1250"
                       dataType="str"
                       length="50"
@@ -377,27 +464,27 @@
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Error Output]"
+                  refId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Error Output]"
                   isErrorOut="true"
                   name="Flat File Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      refId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                       codePage="1250"
                       dataType="text"
                       description="Flat File Source Error Output Column"
-                      lineageId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      lineageId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                       name="Flat File Source Error Output Column" />
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -406,7 +493,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\DFT LoadDimStore\FFS Store"
+              refId="Package\Data Flow Task\FFS Store"
               componentClassID="Microsoft.FlatFileSource"
               contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Flat File Source"
@@ -426,23 +513,23 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT LoadDimStore\FFS Store.Connections[FlatFileConnection]"
+                  refId="Package\Data Flow Task\FFS Store.Connections[FlatFileConnection]"
                   connectionManagerID="{B7390A83-B1D3-4447-8F4E-80224DDED498}:external"
                   connectionManagerRefId="Project.ConnectionManagers[StoresCSV]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
                 <output
-                  refId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output]"
+                  refId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output]"
                   name="Flat File Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].Columns[StoreBusinessId]"
+                      refId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].Columns[StoreBusinessId]"
                       dataType="ui2"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].ExternalColumns[StoreBusinessId]"
-                      lineageId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].Columns[StoreBusinessId]"
+                      externalMetadataColumnId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].ExternalColumns[StoreBusinessId]"
+                      lineageId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].Columns[StoreBusinessId]"
                       name="StoreBusinessId"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -457,14 +544,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].Columns[StoreName]"
+                      refId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].Columns[StoreName]"
                       codePage="1250"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].ExternalColumns[StoreName]"
+                      externalMetadataColumnId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].ExternalColumns[StoreName]"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].Columns[StoreName]"
+                      lineageId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].Columns[StoreName]"
                       name="StoreName"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -479,14 +566,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].Columns[StoreDescription]"
+                      refId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].Columns[StoreDescription]"
                       codePage="1250"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].ExternalColumns[StoreDescription]"
+                      externalMetadataColumnId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].ExternalColumns[StoreDescription]"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].Columns[StoreDescription]"
+                      lineageId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].Columns[StoreDescription]"
                       name="StoreDescription"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -501,14 +588,14 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].Columns[Status]"
+                      refId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].Columns[Status]"
                       codePage="1250"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].ExternalColumns[Status]"
+                      externalMetadataColumnId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].ExternalColumns[Status]"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].Columns[Status]"
+                      lineageId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].Columns[Status]"
                       name="Status"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -523,12 +610,12 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].Columns[ManagerKey]"
+                      refId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].Columns[ManagerKey]"
                       dataType="ui4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].ExternalColumns[ManagerKey]"
-                      lineageId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].Columns[ManagerKey]"
+                      externalMetadataColumnId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].ExternalColumns[ManagerKey]"
+                      lineageId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].Columns[ManagerKey]"
                       name="ManagerKey"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -543,12 +630,12 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].Columns[GeographyKey]"
+                      refId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].Columns[GeographyKey]"
                       dataType="ui4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].ExternalColumns[GeographyKey]"
-                      lineageId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].Columns[GeographyKey]"
+                      externalMetadataColumnId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].ExternalColumns[GeographyKey]"
+                      lineageId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].Columns[GeographyKey]"
                       name="GeographyKey"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -566,59 +653,59 @@
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].ExternalColumns[StoreBusinessId]"
+                      refId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].ExternalColumns[StoreBusinessId]"
                       dataType="ui2"
                       name="StoreBusinessId" />
                     <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].ExternalColumns[StoreName]"
+                      refId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].ExternalColumns[StoreName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
                       name="StoreName" />
                     <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].ExternalColumns[StoreDescription]"
+                      refId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].ExternalColumns[StoreDescription]"
                       codePage="1250"
                       dataType="str"
                       length="50"
                       name="StoreDescription" />
                     <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].ExternalColumns[Status]"
+                      refId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].ExternalColumns[Status]"
                       codePage="1250"
                       dataType="str"
                       length="50"
                       name="Status" />
                     <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].ExternalColumns[ManagerKey]"
+                      refId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].ExternalColumns[ManagerKey]"
                       dataType="ui4"
                       name="ManagerKey" />
                     <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].ExternalColumns[GeographyKey]"
+                      refId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].ExternalColumns[GeographyKey]"
                       dataType="ui4"
                       name="GeographyKey" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Error Output]"
+                  refId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Error Output]"
                   isErrorOut="true"
                   name="Flat File Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      refId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                       codePage="1250"
                       dataType="text"
                       description="Flat File Source Error Output Column"
-                      lineageId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      lineageId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                       name="Flat File Source Error Output Column" />
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -627,274 +714,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\DFT LoadDimStore\Load to StoreDB"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="OLE DB Destination"
-              name="Load to StoreDB"
-              usesDispositions="true"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[DimStoreReload]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\DFT LoadDimStore\Load to StoreDB.Connections[OleDbConnection]"
-                  connectionManagerID="{1F18207F-3849-472F-916E-0F86601DA6C4}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[StoreDB]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="OLE DB Destination Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].Columns[FirstName]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="FirstName"
-                      externalMetadataColumnId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[FirstName]" />
-                    <inputColumn
-                      refId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].Columns[LastName]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="LastName"
-                      externalMetadataColumnId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[LastName]" />
-                    <inputColumn
-                      refId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].Columns[Title]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="Title"
-                      externalMetadataColumnId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[Title]" />
-                    <inputColumn
-                      refId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].Columns[ContinentName]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="ContinentName"
-                      externalMetadataColumnId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].ExternalColumns[ContinentName]"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[ContinentName]" />
-                    <inputColumn
-                      refId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].Columns[CityName]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="CityName"
-                      externalMetadataColumnId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].ExternalColumns[CityName]"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[CityName]" />
-                    <inputColumn
-                      refId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].Columns[StateProvinceName]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="StateProvinceName"
-                      externalMetadataColumnId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceName]"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[StateProvinceName]" />
-                    <inputColumn
-                      refId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].Columns[RegionCountryName]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="RegionCountryName"
-                      externalMetadataColumnId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].ExternalColumns[RegionCountryName]"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[RegionCountryName]" />
-                    <inputColumn
-                      refId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].Columns[StoreBusinessId]"
-                      cachedDataType="ui2"
-                      cachedName="StoreBusinessId"
-                      externalMetadataColumnId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].ExternalColumns[StoreBusinessId]"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[StoreBusinessId]" />
-                    <inputColumn
-                      refId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].Columns[StoreName]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="StoreName"
-                      externalMetadataColumnId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].ExternalColumns[StoreName]"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[StoreName]" />
-                    <inputColumn
-                      refId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].Columns[StoreDescription]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="StoreDescription"
-                      externalMetadataColumnId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].ExternalColumns[StoreDescription]"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[StoreDescription]" />
-                    <inputColumn
-                      refId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].Columns[Status]"
-                      cachedCodepage="1250"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="Status"
-                      externalMetadataColumnId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[Status]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
-                      codePage="1250"
-                      dataType="str"
-                      length="50"
-                      name="FirstName" />
-                    <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
-                      codePage="1250"
-                      dataType="str"
-                      length="50"
-                      name="LastName" />
-                    <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
-                      codePage="1250"
-                      dataType="str"
-                      length="50"
-                      name="Title" />
-                    <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].ExternalColumns[ContinentName]"
-                      codePage="1250"
-                      dataType="str"
-                      length="50"
-                      name="ContinentName" />
-                    <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].ExternalColumns[CityName]"
-                      codePage="1250"
-                      dataType="str"
-                      length="50"
-                      name="CityName" />
-                    <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].ExternalColumns[StateProvinceName]"
-                      codePage="1250"
-                      dataType="str"
-                      length="50"
-                      name="StateProvinceName" />
-                    <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].ExternalColumns[RegionCountryName]"
-                      codePage="1250"
-                      dataType="str"
-                      length="50"
-                      name="RegionCountryName" />
-                    <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].ExternalColumns[StoreBusinessId]"
-                      dataType="i4"
-                      name="StoreBusinessId" />
-                    <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].ExternalColumns[StoreName]"
-                      codePage="1250"
-                      dataType="str"
-                      length="50"
-                      name="StoreName" />
-                    <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].ExternalColumns[StoreDescription]"
-                      codePage="1250"
-                      dataType="str"
-                      length="50"
-                      name="StoreDescription" />
-                    <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
-                      codePage="1250"
-                      dataType="str"
-                      length="50"
-                      name="Status" />
-                    <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].ExternalColumns[LoadDate]"
-                      dataType="dbTimeStamp"
-                      name="LoadDate" />
-                    <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].ExternalColumns[LoadUser]"
-                      codePage="1250"
-                      dataType="str"
-                      length="100"
-                      name="LoadUser" />
-                    <externalMetadataColumn
-                      refId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].ExternalColumns[StoreKey]"
-                      dataType="i4"
-                      name="StoreKey" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT LoadDimStore\Load to StoreDB.Outputs[OLE DB Destination Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT LoadDimStore\Load to StoreDB.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT LoadDimStore\Load to StoreDB.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT LoadDimStore\Load to StoreDB.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT LoadDimStore\Load to StoreDB.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DFT LoadDimStore\Merge Join BY GeographyKey"
+              refId="Package\Data Flow Task\Merge Join BY GeographyKey"
               componentClassID="Microsoft.MergeJoin"
               contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
@@ -921,227 +741,227 @@
               </properties>
               <inputs>
                 <input
-                  refId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Inputs[Merge Join Left Input]"
+                  refId="Package\Data Flow Task\Merge Join BY GeographyKey.Inputs[Merge Join Left Input]"
                   hasSideEffects="true"
                   name="Merge Join Left Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Inputs[Merge Join Left Input].Columns[GeographyKey]"
+                      refId="Package\Data Flow Task\Merge Join BY GeographyKey.Inputs[Merge Join Left Input].Columns[GeographyKey]"
                       cachedDataType="ui4"
                       cachedName="GeographyKey"
                       cachedSortKeyPosition="1"
-                      lineageId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[GeographyKey]" />
+                      lineageId="Package\Data Flow Task\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[GeographyKey]" />
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Inputs[Merge Join Left Input].Columns[StoreBusinessId]"
+                      refId="Package\Data Flow Task\Merge Join BY GeographyKey.Inputs[Merge Join Left Input].Columns[StoreBusinessId]"
                       cachedDataType="ui2"
                       cachedName="StoreBusinessId"
-                      lineageId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[StoreBusinessId]" />
+                      lineageId="Package\Data Flow Task\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[StoreBusinessId]" />
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Inputs[Merge Join Left Input].Columns[StoreName]"
+                      refId="Package\Data Flow Task\Merge Join BY GeographyKey.Inputs[Merge Join Left Input].Columns[StoreName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="StoreName"
-                      lineageId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[StoreName]" />
+                      lineageId="Package\Data Flow Task\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[StoreName]" />
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Inputs[Merge Join Left Input].Columns[StoreDescription]"
+                      refId="Package\Data Flow Task\Merge Join BY GeographyKey.Inputs[Merge Join Left Input].Columns[StoreDescription]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="StoreDescription"
-                      lineageId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[StoreDescription]" />
+                      lineageId="Package\Data Flow Task\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[StoreDescription]" />
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Inputs[Merge Join Left Input].Columns[Status]"
+                      refId="Package\Data Flow Task\Merge Join BY GeographyKey.Inputs[Merge Join Left Input].Columns[Status]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="Status"
-                      lineageId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[Status]" />
+                      lineageId="Package\Data Flow Task\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[Status]" />
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Inputs[Merge Join Left Input].Columns[ManagerKey]"
+                      refId="Package\Data Flow Task\Merge Join BY GeographyKey.Inputs[Merge Join Left Input].Columns[ManagerKey]"
                       cachedDataType="ui4"
                       cachedName="ManagerKey"
-                      lineageId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[ManagerKey]" />
+                      lineageId="Package\Data Flow Task\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[ManagerKey]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
                 <input
-                  refId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Inputs[Merge Join Right Input]"
+                  refId="Package\Data Flow Task\Merge Join BY GeographyKey.Inputs[Merge Join Right Input]"
                   hasSideEffects="true"
                   name="Merge Join Right Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Inputs[Merge Join Right Input].Columns[GeographyKey]"
+                      refId="Package\Data Flow Task\Merge Join BY GeographyKey.Inputs[Merge Join Right Input].Columns[GeographyKey]"
                       cachedDataType="ui4"
                       cachedName="GeographyKey"
                       cachedSortKeyPosition="1"
-                      lineageId="Package\DFT LoadDimStore\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[GeographyKey]" />
+                      lineageId="Package\Data Flow Task\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[GeographyKey]" />
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Inputs[Merge Join Right Input].Columns[ContinentName]"
+                      refId="Package\Data Flow Task\Merge Join BY GeographyKey.Inputs[Merge Join Right Input].Columns[ContinentName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="ContinentName"
-                      lineageId="Package\DFT LoadDimStore\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[ContinentName]" />
+                      lineageId="Package\Data Flow Task\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[ContinentName]" />
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Inputs[Merge Join Right Input].Columns[CityName]"
+                      refId="Package\Data Flow Task\Merge Join BY GeographyKey.Inputs[Merge Join Right Input].Columns[CityName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="CityName"
-                      lineageId="Package\DFT LoadDimStore\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[CityName]" />
+                      lineageId="Package\Data Flow Task\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[CityName]" />
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Inputs[Merge Join Right Input].Columns[StateProvinceName]"
+                      refId="Package\Data Flow Task\Merge Join BY GeographyKey.Inputs[Merge Join Right Input].Columns[StateProvinceName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="StateProvinceName"
-                      lineageId="Package\DFT LoadDimStore\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[StateProvinceName]" />
+                      lineageId="Package\Data Flow Task\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[StateProvinceName]" />
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Inputs[Merge Join Right Input].Columns[RegionCountryName]"
+                      refId="Package\Data Flow Task\Merge Join BY GeographyKey.Inputs[Merge Join Right Input].Columns[RegionCountryName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="RegionCountryName"
-                      lineageId="Package\DFT LoadDimStore\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[RegionCountryName]" />
+                      lineageId="Package\Data Flow Task\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[RegionCountryName]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output]"
+                  refId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output]"
                   name="Merge Join Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StoreBusinessId]"
+                      refId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StoreBusinessId]"
                       dataType="ui2"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StoreBusinessId]"
+                      lineageId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StoreBusinessId]"
                       name="StoreBusinessId">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\DFT LoadDimStore\Merge Join BY GeographyKey.Inputs[Merge Join Left Input].Columns[StoreBusinessId]}</property>
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join BY GeographyKey.Inputs[Merge Join Left Input].Columns[StoreBusinessId]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StoreName]"
+                      refId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StoreName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StoreName]"
+                      lineageId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StoreName]"
                       name="StoreName">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\DFT LoadDimStore\Merge Join BY GeographyKey.Inputs[Merge Join Left Input].Columns[StoreName]}</property>
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join BY GeographyKey.Inputs[Merge Join Left Input].Columns[StoreName]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StoreDescription]"
+                      refId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StoreDescription]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StoreDescription]"
+                      lineageId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StoreDescription]"
                       name="StoreDescription">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\DFT LoadDimStore\Merge Join BY GeographyKey.Inputs[Merge Join Left Input].Columns[StoreDescription]}</property>
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join BY GeographyKey.Inputs[Merge Join Left Input].Columns[StoreDescription]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[Status]"
+                      refId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[Status]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[Status]"
+                      lineageId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[Status]"
                       name="Status">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\DFT LoadDimStore\Merge Join BY GeographyKey.Inputs[Merge Join Left Input].Columns[Status]}</property>
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join BY GeographyKey.Inputs[Merge Join Left Input].Columns[Status]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[ManagerKey]"
+                      refId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[ManagerKey]"
                       dataType="ui4"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[ManagerKey]"
+                      lineageId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[ManagerKey]"
                       name="ManagerKey">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\DFT LoadDimStore\Merge Join BY GeographyKey.Inputs[Merge Join Left Input].Columns[ManagerKey]}</property>
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join BY GeographyKey.Inputs[Merge Join Left Input].Columns[ManagerKey]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[ContinentName]"
+                      refId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[ContinentName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[ContinentName]"
+                      lineageId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[ContinentName]"
                       name="ContinentName">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\DFT LoadDimStore\Merge Join BY GeographyKey.Inputs[Merge Join Right Input].Columns[ContinentName]}</property>
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join BY GeographyKey.Inputs[Merge Join Right Input].Columns[ContinentName]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[CityName]"
+                      refId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[CityName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[CityName]"
+                      lineageId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[CityName]"
                       name="CityName">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\DFT LoadDimStore\Merge Join BY GeographyKey.Inputs[Merge Join Right Input].Columns[CityName]}</property>
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join BY GeographyKey.Inputs[Merge Join Right Input].Columns[CityName]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StateProvinceName]"
+                      refId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StateProvinceName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StateProvinceName]"
+                      lineageId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StateProvinceName]"
                       name="StateProvinceName">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\DFT LoadDimStore\Merge Join BY GeographyKey.Inputs[Merge Join Right Input].Columns[StateProvinceName]}</property>
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join BY GeographyKey.Inputs[Merge Join Right Input].Columns[StateProvinceName]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[RegionCountryName]"
+                      refId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[RegionCountryName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[RegionCountryName]"
+                      lineageId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[RegionCountryName]"
                       name="RegionCountryName">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\DFT LoadDimStore\Merge Join BY GeographyKey.Inputs[Merge Join Right Input].Columns[RegionCountryName]}</property>
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join BY GeographyKey.Inputs[Merge Join Right Input].Columns[RegionCountryName]}</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -1150,7 +970,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey"
+              refId="Package\Data Flow Task\Merge Join BY ManagerKey"
               componentClassID="Microsoft.MergeJoin"
               contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
@@ -1177,275 +997,275 @@
               </properties>
               <inputs>
                 <input
-                  refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Left Input]"
+                  refId="Package\Data Flow Task\Merge Join BY ManagerKey.Inputs[Merge Join Left Input]"
                   hasSideEffects="true"
                   name="Merge Join Left Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[ManagerKey]"
+                      refId="Package\Data Flow Task\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[ManagerKey]"
                       cachedDataType="ui4"
                       cachedName="ManagerKey"
                       cachedSortKeyPosition="1"
-                      lineageId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[ManagerKey]" />
+                      lineageId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[ManagerKey]" />
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[ContinentName]"
+                      refId="Package\Data Flow Task\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[ContinentName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="ContinentName"
-                      lineageId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[ContinentName]" />
+                      lineageId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[ContinentName]" />
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[CityName]"
+                      refId="Package\Data Flow Task\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[CityName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="CityName"
-                      lineageId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[CityName]" />
+                      lineageId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[CityName]" />
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[StateProvinceName]"
+                      refId="Package\Data Flow Task\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[StateProvinceName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="StateProvinceName"
-                      lineageId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[StateProvinceName]" />
+                      lineageId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[StateProvinceName]" />
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[RegionCountryName]"
+                      refId="Package\Data Flow Task\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[RegionCountryName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="RegionCountryName"
-                      lineageId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[RegionCountryName]" />
+                      lineageId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[RegionCountryName]" />
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[StoreBusinessId]"
+                      refId="Package\Data Flow Task\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[StoreBusinessId]"
                       cachedDataType="ui2"
                       cachedName="StoreBusinessId"
-                      lineageId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[StoreBusinessId]" />
+                      lineageId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[StoreBusinessId]" />
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[StoreName]"
+                      refId="Package\Data Flow Task\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[StoreName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="StoreName"
-                      lineageId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[StoreName]" />
+                      lineageId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[StoreName]" />
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[StoreDescription]"
+                      refId="Package\Data Flow Task\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[StoreDescription]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="StoreDescription"
-                      lineageId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[StoreDescription]" />
+                      lineageId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[StoreDescription]" />
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[Status]"
+                      refId="Package\Data Flow Task\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[Status]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="Status"
-                      lineageId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[Status]" />
+                      lineageId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[Status]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
                 <input
-                  refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Right Input]"
+                  refId="Package\Data Flow Task\Merge Join BY ManagerKey.Inputs[Merge Join Right Input]"
                   hasSideEffects="true"
                   name="Merge Join Right Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Right Input].Columns[EmployeeKey]"
+                      refId="Package\Data Flow Task\Merge Join BY ManagerKey.Inputs[Merge Join Right Input].Columns[EmployeeKey]"
                       cachedDataType="ui4"
                       cachedName="EmployeeKey"
                       cachedSortKeyPosition="1"
-                      lineageId="Package\DFT LoadDimStore\Sort Employee BY EmployeeKey ASC.Outputs[Sort Output].Columns[EmployeeKey]" />
+                      lineageId="Package\Data Flow Task\Sort Employee BY EmployeeKey ASC.Outputs[Sort Output].Columns[EmployeeKey]" />
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Right Input].Columns[FirstName]"
+                      refId="Package\Data Flow Task\Merge Join BY ManagerKey.Inputs[Merge Join Right Input].Columns[FirstName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="FirstName"
-                      lineageId="Package\DFT LoadDimStore\Sort Employee BY EmployeeKey ASC.Outputs[Sort Output].Columns[FirstName]" />
+                      lineageId="Package\Data Flow Task\Sort Employee BY EmployeeKey ASC.Outputs[Sort Output].Columns[FirstName]" />
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Right Input].Columns[LastName]"
+                      refId="Package\Data Flow Task\Merge Join BY ManagerKey.Inputs[Merge Join Right Input].Columns[LastName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="LastName"
-                      lineageId="Package\DFT LoadDimStore\Sort Employee BY EmployeeKey ASC.Outputs[Sort Output].Columns[LastName]" />
+                      lineageId="Package\Data Flow Task\Sort Employee BY EmployeeKey ASC.Outputs[Sort Output].Columns[LastName]" />
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Right Input].Columns[Title]"
+                      refId="Package\Data Flow Task\Merge Join BY ManagerKey.Inputs[Merge Join Right Input].Columns[Title]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="Title"
-                      lineageId="Package\DFT LoadDimStore\Sort Employee BY EmployeeKey ASC.Outputs[Sort Output].Columns[Title]" />
+                      lineageId="Package\Data Flow Task\Sort Employee BY EmployeeKey ASC.Outputs[Sort Output].Columns[Title]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output]"
+                  refId="Package\Data Flow Task\Merge Join BY ManagerKey.Outputs[Merge Join Output]"
                   name="Merge Join Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[FirstName]"
+                      refId="Package\Data Flow Task\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[FirstName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[FirstName]"
+                      lineageId="Package\Data Flow Task\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[FirstName]"
                       name="FirstName">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Right Input].Columns[FirstName]}</property>
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join BY ManagerKey.Inputs[Merge Join Right Input].Columns[FirstName]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[LastName]"
+                      refId="Package\Data Flow Task\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[LastName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[LastName]"
+                      lineageId="Package\Data Flow Task\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[LastName]"
                       name="LastName">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Right Input].Columns[LastName]}</property>
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join BY ManagerKey.Inputs[Merge Join Right Input].Columns[LastName]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[Title]"
+                      refId="Package\Data Flow Task\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[Title]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[Title]"
+                      lineageId="Package\Data Flow Task\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[Title]"
                       name="Title">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Right Input].Columns[Title]}</property>
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join BY ManagerKey.Inputs[Merge Join Right Input].Columns[Title]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[ContinentName]"
+                      refId="Package\Data Flow Task\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[ContinentName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[ContinentName]"
+                      lineageId="Package\Data Flow Task\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[ContinentName]"
                       name="ContinentName">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[ContinentName]}</property>
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[ContinentName]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[CityName]"
+                      refId="Package\Data Flow Task\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[CityName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[CityName]"
+                      lineageId="Package\Data Flow Task\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[CityName]"
                       name="CityName">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[CityName]}</property>
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[CityName]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[StateProvinceName]"
+                      refId="Package\Data Flow Task\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[StateProvinceName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[StateProvinceName]"
+                      lineageId="Package\Data Flow Task\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[StateProvinceName]"
                       name="StateProvinceName">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[StateProvinceName]}</property>
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[StateProvinceName]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[RegionCountryName]"
+                      refId="Package\Data Flow Task\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[RegionCountryName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[RegionCountryName]"
+                      lineageId="Package\Data Flow Task\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[RegionCountryName]"
                       name="RegionCountryName">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[RegionCountryName]}</property>
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[RegionCountryName]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[StoreBusinessId]"
+                      refId="Package\Data Flow Task\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[StoreBusinessId]"
                       dataType="ui2"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[StoreBusinessId]"
+                      lineageId="Package\Data Flow Task\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[StoreBusinessId]"
                       name="StoreBusinessId">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[StoreBusinessId]}</property>
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[StoreBusinessId]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[StoreName]"
+                      refId="Package\Data Flow Task\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[StoreName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[StoreName]"
+                      lineageId="Package\Data Flow Task\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[StoreName]"
                       name="StoreName">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[StoreName]}</property>
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[StoreName]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[StoreDescription]"
+                      refId="Package\Data Flow Task\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[StoreDescription]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[StoreDescription]"
+                      lineageId="Package\Data Flow Task\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[StoreDescription]"
                       name="StoreDescription">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[StoreDescription]}</property>
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[StoreDescription]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[Status]"
+                      refId="Package\Data Flow Task\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[Status]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[Status]"
+                      lineageId="Package\Data Flow Task\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[Status]"
                       name="Status">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="The input column associated with this output column"
-                          name="InputColumnID">#{Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[Status]}</property>
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[Status]}</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -1454,7 +1274,41 @@
               </outputs>
             </component>
             <component
-              refId="Package\DFT LoadDimStore\Sort Area BY GeographyKey ASC"
+              refId="Package\Data Flow Task\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Sort Area BY GeographyKey ASC"
               componentClassID="Microsoft.Sort"
               contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
@@ -1473,14 +1327,14 @@
               </properties>
               <inputs>
                 <input
-                  refId="Package\DFT LoadDimStore\Sort Area BY GeographyKey ASC.Inputs[Sort Input]"
+                  refId="Package\Data Flow Task\Sort Area BY GeographyKey ASC.Inputs[Sort Input]"
                   name="Sort Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Sort Area BY GeographyKey ASC.Inputs[Sort Input].Columns[GeographyKey]"
+                      refId="Package\Data Flow Task\Sort Area BY GeographyKey ASC.Inputs[Sort Input].Columns[GeographyKey]"
                       cachedDataType="ui4"
                       cachedName="GeographyKey"
-                      lineageId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].Columns[GeographyKey]">
+                      lineageId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].Columns[GeographyKey]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1493,12 +1347,12 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Sort Area BY GeographyKey ASC.Inputs[Sort Input].Columns[ContinentName]"
+                      refId="Package\Data Flow Task\Sort Area BY GeographyKey ASC.Inputs[Sort Input].Columns[ContinentName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="ContinentName"
-                      lineageId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].Columns[ContinentName]">
+                      lineageId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].Columns[ContinentName]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1511,12 +1365,12 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Sort Area BY GeographyKey ASC.Inputs[Sort Input].Columns[CityName]"
+                      refId="Package\Data Flow Task\Sort Area BY GeographyKey ASC.Inputs[Sort Input].Columns[CityName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="CityName"
-                      lineageId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].Columns[CityName]">
+                      lineageId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].Columns[CityName]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1529,12 +1383,12 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Sort Area BY GeographyKey ASC.Inputs[Sort Input].Columns[StateProvinceName]"
+                      refId="Package\Data Flow Task\Sort Area BY GeographyKey ASC.Inputs[Sort Input].Columns[StateProvinceName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="StateProvinceName"
-                      lineageId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].Columns[StateProvinceName]">
+                      lineageId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].Columns[StateProvinceName]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1547,12 +1401,12 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Sort Area BY GeographyKey ASC.Inputs[Sort Input].Columns[RegionCountryName]"
+                      refId="Package\Data Flow Task\Sort Area BY GeographyKey ASC.Inputs[Sort Input].Columns[RegionCountryName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="RegionCountryName"
-                      lineageId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].Columns[RegionCountryName]">
+                      lineageId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].Columns[RegionCountryName]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1570,14 +1424,14 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT LoadDimStore\Sort Area BY GeographyKey ASC.Outputs[Sort Output]"
+                  refId="Package\Data Flow Task\Sort Area BY GeographyKey ASC.Outputs[Sort Output]"
                   isSorted="true"
                   name="Sort Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[GeographyKey]"
+                      refId="Package\Data Flow Task\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[GeographyKey]"
                       dataType="ui4"
-                      lineageId="Package\DFT LoadDimStore\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[GeographyKey]"
+                      lineageId="Package\Data Flow Task\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[GeographyKey]"
                       name="GeographyKey"
                       sortKeyPosition="1">
                       <properties>
@@ -1585,67 +1439,67 @@
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].Columns[GeographyKey]}</property>
+                          name="SortColumnId">#{Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].Columns[GeographyKey]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[ContinentName]"
+                      refId="Package\Data Flow Task\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[ContinentName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[ContinentName]"
+                      lineageId="Package\Data Flow Task\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[ContinentName]"
                       name="ContinentName">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].Columns[ContinentName]}</property>
+                          name="SortColumnId">#{Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].Columns[ContinentName]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[CityName]"
+                      refId="Package\Data Flow Task\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[CityName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[CityName]"
+                      lineageId="Package\Data Flow Task\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[CityName]"
                       name="CityName">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].Columns[CityName]}</property>
+                          name="SortColumnId">#{Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].Columns[CityName]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[StateProvinceName]"
+                      refId="Package\Data Flow Task\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[StateProvinceName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[StateProvinceName]"
+                      lineageId="Package\Data Flow Task\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[StateProvinceName]"
                       name="StateProvinceName">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].Columns[StateProvinceName]}</property>
+                          name="SortColumnId">#{Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].Columns[StateProvinceName]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[RegionCountryName]"
+                      refId="Package\Data Flow Task\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[RegionCountryName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[RegionCountryName]"
+                      lineageId="Package\Data Flow Task\Sort Area BY GeographyKey ASC.Outputs[Sort Output].Columns[RegionCountryName]"
                       name="RegionCountryName">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output].Columns[RegionCountryName]}</property>
+                          name="SortColumnId">#{Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output].Columns[RegionCountryName]}</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -1654,7 +1508,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC"
+              refId="Package\Data Flow Task\Sort BY ManagerKey ASC"
               componentClassID="Microsoft.Sort"
               contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
@@ -1673,16 +1527,16 @@
               </properties>
               <inputs>
                 <input
-                  refId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Inputs[Sort Input]"
+                  refId="Package\Data Flow Task\Sort BY ManagerKey ASC.Inputs[Sort Input]"
                   name="Sort Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Inputs[Sort Input].Columns[ContinentName]"
+                      refId="Package\Data Flow Task\Sort BY ManagerKey ASC.Inputs[Sort Input].Columns[ContinentName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="ContinentName"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[ContinentName]">
+                      lineageId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[ContinentName]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1695,12 +1549,12 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Inputs[Sort Input].Columns[CityName]"
+                      refId="Package\Data Flow Task\Sort BY ManagerKey ASC.Inputs[Sort Input].Columns[CityName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="CityName"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[CityName]">
+                      lineageId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[CityName]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1713,12 +1567,12 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Inputs[Sort Input].Columns[StateProvinceName]"
+                      refId="Package\Data Flow Task\Sort BY ManagerKey ASC.Inputs[Sort Input].Columns[StateProvinceName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="StateProvinceName"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StateProvinceName]">
+                      lineageId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StateProvinceName]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1731,12 +1585,12 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Inputs[Sort Input].Columns[RegionCountryName]"
+                      refId="Package\Data Flow Task\Sort BY ManagerKey ASC.Inputs[Sort Input].Columns[RegionCountryName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="RegionCountryName"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[RegionCountryName]">
+                      lineageId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[RegionCountryName]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1749,10 +1603,10 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Inputs[Sort Input].Columns[StoreBusinessId]"
+                      refId="Package\Data Flow Task\Sort BY ManagerKey ASC.Inputs[Sort Input].Columns[StoreBusinessId]"
                       cachedDataType="ui2"
                       cachedName="StoreBusinessId"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StoreBusinessId]">
+                      lineageId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StoreBusinessId]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1765,12 +1619,12 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Inputs[Sort Input].Columns[StoreName]"
+                      refId="Package\Data Flow Task\Sort BY ManagerKey ASC.Inputs[Sort Input].Columns[StoreName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="StoreName"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StoreName]">
+                      lineageId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StoreName]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1783,12 +1637,12 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Inputs[Sort Input].Columns[StoreDescription]"
+                      refId="Package\Data Flow Task\Sort BY ManagerKey ASC.Inputs[Sort Input].Columns[StoreDescription]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="StoreDescription"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StoreDescription]">
+                      lineageId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StoreDescription]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1801,12 +1655,12 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Inputs[Sort Input].Columns[Status]"
+                      refId="Package\Data Flow Task\Sort BY ManagerKey ASC.Inputs[Sort Input].Columns[Status]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="Status"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[Status]">
+                      lineageId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[Status]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1819,10 +1673,10 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Inputs[Sort Input].Columns[ManagerKey]"
+                      refId="Package\Data Flow Task\Sort BY ManagerKey ASC.Inputs[Sort Input].Columns[ManagerKey]"
                       cachedDataType="ui4"
                       cachedName="ManagerKey"
-                      lineageId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[ManagerKey]">
+                      lineageId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[ManagerKey]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -1840,132 +1694,132 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output]"
+                  refId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output]"
                   isSorted="true"
                   name="Sort Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[ContinentName]"
+                      refId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[ContinentName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[ContinentName]"
+                      lineageId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[ContinentName]"
                       name="ContinentName">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[ContinentName]}</property>
+                          name="SortColumnId">#{Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[ContinentName]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[CityName]"
+                      refId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[CityName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[CityName]"
+                      lineageId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[CityName]"
                       name="CityName">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[CityName]}</property>
+                          name="SortColumnId">#{Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[CityName]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[StateProvinceName]"
+                      refId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[StateProvinceName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[StateProvinceName]"
+                      lineageId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[StateProvinceName]"
                       name="StateProvinceName">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StateProvinceName]}</property>
+                          name="SortColumnId">#{Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StateProvinceName]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[RegionCountryName]"
+                      refId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[RegionCountryName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[RegionCountryName]"
+                      lineageId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[RegionCountryName]"
                       name="RegionCountryName">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[RegionCountryName]}</property>
+                          name="SortColumnId">#{Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[RegionCountryName]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[StoreBusinessId]"
+                      refId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[StoreBusinessId]"
                       dataType="ui2"
-                      lineageId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[StoreBusinessId]"
+                      lineageId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[StoreBusinessId]"
                       name="StoreBusinessId">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StoreBusinessId]}</property>
+                          name="SortColumnId">#{Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StoreBusinessId]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[StoreName]"
+                      refId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[StoreName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[StoreName]"
+                      lineageId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[StoreName]"
                       name="StoreName">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StoreName]}</property>
+                          name="SortColumnId">#{Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StoreName]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[StoreDescription]"
+                      refId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[StoreDescription]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[StoreDescription]"
+                      lineageId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[StoreDescription]"
                       name="StoreDescription">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StoreDescription]}</property>
+                          name="SortColumnId">#{Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StoreDescription]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[Status]"
+                      refId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[Status]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[Status]"
+                      lineageId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[Status]"
                       name="Status">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[Status]}</property>
+                          name="SortColumnId">#{Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[Status]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[ManagerKey]"
+                      refId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[ManagerKey]"
                       dataType="ui4"
-                      lineageId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[ManagerKey]"
+                      lineageId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[ManagerKey]"
                       name="ManagerKey"
                       sortKeyPosition="1">
                       <properties>
@@ -1973,7 +1827,7 @@
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[ManagerKey]}</property>
+                          name="SortColumnId">#{Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[ManagerKey]}</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -1982,7 +1836,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\DFT LoadDimStore\Sort Employee BY EmployeeKey ASC"
+              refId="Package\Data Flow Task\Sort Employee BY EmployeeKey ASC"
               componentClassID="Microsoft.Sort"
               contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
@@ -2001,14 +1855,14 @@
               </properties>
               <inputs>
                 <input
-                  refId="Package\DFT LoadDimStore\Sort Employee BY EmployeeKey ASC.Inputs[Sort Input]"
+                  refId="Package\Data Flow Task\Sort Employee BY EmployeeKey ASC.Inputs[Sort Input]"
                   name="Sort Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Sort Employee BY EmployeeKey ASC.Inputs[Sort Input].Columns[EmployeeKey]"
+                      refId="Package\Data Flow Task\Sort Employee BY EmployeeKey ASC.Inputs[Sort Input].Columns[EmployeeKey]"
                       cachedDataType="ui4"
                       cachedName="EmployeeKey"
-                      lineageId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Output].Columns[EmployeeKey]">
+                      lineageId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Output].Columns[EmployeeKey]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -2021,12 +1875,12 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Sort Employee BY EmployeeKey ASC.Inputs[Sort Input].Columns[FirstName]"
+                      refId="Package\Data Flow Task\Sort Employee BY EmployeeKey ASC.Inputs[Sort Input].Columns[FirstName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="FirstName"
-                      lineageId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Output].Columns[FirstName]">
+                      lineageId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Output].Columns[FirstName]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -2039,12 +1893,12 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Sort Employee BY EmployeeKey ASC.Inputs[Sort Input].Columns[LastName]"
+                      refId="Package\Data Flow Task\Sort Employee BY EmployeeKey ASC.Inputs[Sort Input].Columns[LastName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="LastName"
-                      lineageId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Output].Columns[LastName]">
+                      lineageId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Output].Columns[LastName]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -2057,12 +1911,12 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Sort Employee BY EmployeeKey ASC.Inputs[Sort Input].Columns[Title]"
+                      refId="Package\Data Flow Task\Sort Employee BY EmployeeKey ASC.Inputs[Sort Input].Columns[Title]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="Title"
-                      lineageId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Output].Columns[Title]">
+                      lineageId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Output].Columns[Title]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -2080,14 +1934,14 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT LoadDimStore\Sort Employee BY EmployeeKey ASC.Outputs[Sort Output]"
+                  refId="Package\Data Flow Task\Sort Employee BY EmployeeKey ASC.Outputs[Sort Output]"
                   isSorted="true"
                   name="Sort Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Sort Employee BY EmployeeKey ASC.Outputs[Sort Output].Columns[EmployeeKey]"
+                      refId="Package\Data Flow Task\Sort Employee BY EmployeeKey ASC.Outputs[Sort Output].Columns[EmployeeKey]"
                       dataType="ui4"
-                      lineageId="Package\DFT LoadDimStore\Sort Employee BY EmployeeKey ASC.Outputs[Sort Output].Columns[EmployeeKey]"
+                      lineageId="Package\Data Flow Task\Sort Employee BY EmployeeKey ASC.Outputs[Sort Output].Columns[EmployeeKey]"
                       name="EmployeeKey"
                       sortKeyPosition="1">
                       <properties>
@@ -2095,52 +1949,52 @@
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Output].Columns[EmployeeKey]}</property>
+                          name="SortColumnId">#{Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Output].Columns[EmployeeKey]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Sort Employee BY EmployeeKey ASC.Outputs[Sort Output].Columns[FirstName]"
+                      refId="Package\Data Flow Task\Sort Employee BY EmployeeKey ASC.Outputs[Sort Output].Columns[FirstName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Sort Employee BY EmployeeKey ASC.Outputs[Sort Output].Columns[FirstName]"
+                      lineageId="Package\Data Flow Task\Sort Employee BY EmployeeKey ASC.Outputs[Sort Output].Columns[FirstName]"
                       name="FirstName">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Output].Columns[FirstName]}</property>
+                          name="SortColumnId">#{Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Output].Columns[FirstName]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Sort Employee BY EmployeeKey ASC.Outputs[Sort Output].Columns[LastName]"
+                      refId="Package\Data Flow Task\Sort Employee BY EmployeeKey ASC.Outputs[Sort Output].Columns[LastName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Sort Employee BY EmployeeKey ASC.Outputs[Sort Output].Columns[LastName]"
+                      lineageId="Package\Data Flow Task\Sort Employee BY EmployeeKey ASC.Outputs[Sort Output].Columns[LastName]"
                       name="LastName">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Output].Columns[LastName]}</property>
+                          name="SortColumnId">#{Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Output].Columns[LastName]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Sort Employee BY EmployeeKey ASC.Outputs[Sort Output].Columns[Title]"
+                      refId="Package\Data Flow Task\Sort Employee BY EmployeeKey ASC.Outputs[Sort Output].Columns[Title]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Sort Employee BY EmployeeKey ASC.Outputs[Sort Output].Columns[Title]"
+                      lineageId="Package\Data Flow Task\Sort Employee BY EmployeeKey ASC.Outputs[Sort Output].Columns[Title]"
                       name="Title">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Output].Columns[Title]}</property>
+                          name="SortColumnId">#{Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Output].Columns[Title]}</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -2149,7 +2003,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC"
+              refId="Package\Data Flow Task\Sort Store BY GeographyKey ASC"
               componentClassID="Microsoft.Sort"
               contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
@@ -2168,14 +2022,14 @@
               </properties>
               <inputs>
                 <input
-                  refId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Inputs[Sort Input]"
+                  refId="Package\Data Flow Task\Sort Store BY GeographyKey ASC.Inputs[Sort Input]"
                   name="Sort Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Inputs[Sort Input].Columns[StoreBusinessId]"
+                      refId="Package\Data Flow Task\Sort Store BY GeographyKey ASC.Inputs[Sort Input].Columns[StoreBusinessId]"
                       cachedDataType="ui2"
                       cachedName="StoreBusinessId"
-                      lineageId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].Columns[StoreBusinessId]">
+                      lineageId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].Columns[StoreBusinessId]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -2188,12 +2042,12 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Inputs[Sort Input].Columns[StoreName]"
+                      refId="Package\Data Flow Task\Sort Store BY GeographyKey ASC.Inputs[Sort Input].Columns[StoreName]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="StoreName"
-                      lineageId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].Columns[StoreName]">
+                      lineageId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].Columns[StoreName]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -2206,12 +2060,12 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Inputs[Sort Input].Columns[StoreDescription]"
+                      refId="Package\Data Flow Task\Sort Store BY GeographyKey ASC.Inputs[Sort Input].Columns[StoreDescription]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="StoreDescription"
-                      lineageId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].Columns[StoreDescription]">
+                      lineageId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].Columns[StoreDescription]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -2224,12 +2078,12 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Inputs[Sort Input].Columns[Status]"
+                      refId="Package\Data Flow Task\Sort Store BY GeographyKey ASC.Inputs[Sort Input].Columns[Status]"
                       cachedCodepage="1250"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="Status"
-                      lineageId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].Columns[Status]">
+                      lineageId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].Columns[Status]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -2242,10 +2096,10 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Inputs[Sort Input].Columns[ManagerKey]"
+                      refId="Package\Data Flow Task\Sort Store BY GeographyKey ASC.Inputs[Sort Input].Columns[ManagerKey]"
                       cachedDataType="ui4"
                       cachedName="ManagerKey"
-                      lineageId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].Columns[ManagerKey]">
+                      lineageId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].Columns[ManagerKey]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -2258,10 +2112,10 @@
                       </properties>
                     </inputColumn>
                     <inputColumn
-                      refId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Inputs[Sort Input].Columns[GeographyKey]"
+                      refId="Package\Data Flow Task\Sort Store BY GeographyKey ASC.Inputs[Sort Input].Columns[GeographyKey]"
                       cachedDataType="ui4"
                       cachedName="GeographyKey"
-                      lineageId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].Columns[GeographyKey]">
+                      lineageId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].Columns[GeographyKey]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -2279,85 +2133,85 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Outputs[Sort Output]"
+                  refId="Package\Data Flow Task\Sort Store BY GeographyKey ASC.Outputs[Sort Output]"
                   isSorted="true"
                   name="Sort Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[StoreBusinessId]"
+                      refId="Package\Data Flow Task\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[StoreBusinessId]"
                       dataType="ui2"
-                      lineageId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[StoreBusinessId]"
+                      lineageId="Package\Data Flow Task\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[StoreBusinessId]"
                       name="StoreBusinessId">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].Columns[StoreBusinessId]}</property>
+                          name="SortColumnId">#{Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].Columns[StoreBusinessId]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[StoreName]"
+                      refId="Package\Data Flow Task\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[StoreName]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[StoreName]"
+                      lineageId="Package\Data Flow Task\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[StoreName]"
                       name="StoreName">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].Columns[StoreName]}</property>
+                          name="SortColumnId">#{Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].Columns[StoreName]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[StoreDescription]"
+                      refId="Package\Data Flow Task\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[StoreDescription]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[StoreDescription]"
+                      lineageId="Package\Data Flow Task\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[StoreDescription]"
                       name="StoreDescription">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].Columns[StoreDescription]}</property>
+                          name="SortColumnId">#{Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].Columns[StoreDescription]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[Status]"
+                      refId="Package\Data Flow Task\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[Status]"
                       codePage="1250"
                       dataType="str"
                       length="50"
-                      lineageId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[Status]"
+                      lineageId="Package\Data Flow Task\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[Status]"
                       name="Status">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].Columns[Status]}</property>
+                          name="SortColumnId">#{Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].Columns[Status]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[ManagerKey]"
+                      refId="Package\Data Flow Task\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[ManagerKey]"
                       dataType="ui4"
-                      lineageId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[ManagerKey]"
+                      lineageId="Package\Data Flow Task\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[ManagerKey]"
                       name="ManagerKey">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].Columns[ManagerKey]}</property>
+                          name="SortColumnId">#{Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].Columns[ManagerKey]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[GeographyKey]"
+                      refId="Package\Data Flow Task\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[GeographyKey]"
                       dataType="ui4"
-                      lineageId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[GeographyKey]"
+                      lineageId="Package\Data Flow Task\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[GeographyKey]"
                       name="GeographyKey"
                       sortKeyPosition="1">
                       <properties>
@@ -2365,7 +2219,7 @@
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].Columns[GeographyKey]}</property>
+                          name="SortColumnId">#{Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output].Columns[GeographyKey]}</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -2376,81 +2230,55 @@
           </components>
           <paths>
             <path
-              refId="Package\DFT LoadDimStore.Paths[Flat File Source Output]"
-              endId="Package\DFT LoadDimStore\Sort Area BY GeographyKey ASC.Inputs[Sort Input]"
+              refId="Package\Data Flow Task.Paths[Flat File Source Output]"
+              endId="Package\Data Flow Task\Sort Store BY GeographyKey ASC.Inputs[Sort Input]"
               name="Flat File Source Output"
-              startId="Package\DFT LoadDimStore\FFS Area.Outputs[Flat File Source Output]" />
+              startId="Package\Data Flow Task\FFS Store.Outputs[Flat File Source Output]" />
             <path
-              refId="Package\DFT LoadDimStore.Paths[Flat File Source Output1]"
-              endId="Package\DFT LoadDimStore\Sort Employee BY EmployeeKey ASC.Inputs[Sort Input]"
+              refId="Package\Data Flow Task.Paths[Flat File Source Output1]"
+              endId="Package\Data Flow Task\Sort Employee BY EmployeeKey ASC.Inputs[Sort Input]"
               name="Flat File Source Output"
-              startId="Package\DFT LoadDimStore\FFS Employee.Outputs[Flat File Source Output]" />
+              startId="Package\Data Flow Task\FFS Employee.Outputs[Flat File Source Output]" />
             <path
-              refId="Package\DFT LoadDimStore.Paths[Flat File Source Output2]"
-              endId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Inputs[Sort Input]"
+              refId="Package\Data Flow Task.Paths[Flat File Source Output2]"
+              endId="Package\Data Flow Task\Sort Area BY GeographyKey ASC.Inputs[Sort Input]"
               name="Flat File Source Output"
-              startId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output]" />
+              startId="Package\Data Flow Task\FFS Area.Outputs[Flat File Source Output]" />
             <path
-              refId="Package\DFT LoadDimStore.Paths[Merge Join Output]"
-              endId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input]"
+              refId="Package\Data Flow Task.Paths[Merge Join Output]"
+              endId="Package\Data Flow Task\Sort BY ManagerKey ASC.Inputs[Sort Input]"
               name="Merge Join Output"
-              startId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output]" />
+              startId="Package\Data Flow Task\Merge Join BY GeographyKey.Outputs[Merge Join Output]" />
             <path
-              refId="Package\DFT LoadDimStore.Paths[Merge Join Output1]"
-              endId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Inputs[Sort Input]"
-              name="Merge Join Output"
-              startId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output]" />
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\Sort.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\DimStore_CurrentData.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\DFT LoadDimStore.Paths[Sort Output]"
-              endId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Left Input]"
+              refId="Package\Data Flow Task.Paths[Sort Output]"
+              endId="Package\Data Flow Task\Merge Join BY GeographyKey.Inputs[Merge Join Right Input]"
               name="Sort Output"
-              startId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output]" />
+              startId="Package\Data Flow Task\Sort Area BY GeographyKey ASC.Outputs[Sort Output]" />
             <path
-              refId="Package\DFT LoadDimStore.Paths[Sort Output1]"
-              endId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Right Input]"
+              refId="Package\Data Flow Task.Paths[Sort Output1]"
+              endId="Package\Data Flow Task\Merge Join BY GeographyKey.Inputs[Merge Join Left Input]"
               name="Sort Output"
-              startId="Package\DFT LoadDimStore\Sort Employee BY EmployeeKey ASC.Outputs[Sort Output]" />
+              startId="Package\Data Flow Task\Sort Store BY GeographyKey ASC.Outputs[Sort Output]" />
             <path
-              refId="Package\DFT LoadDimStore.Paths[Sort Output2]"
-              endId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Inputs[Merge Join Left Input]"
+              refId="Package\Data Flow Task.Paths[Sort Output2]"
+              endId="Package\Data Flow Task\Merge Join BY ManagerKey.Inputs[Merge Join Right Input]"
               name="Sort Output"
-              startId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Outputs[Sort Output]" />
+              startId="Package\Data Flow Task\Sort Employee BY EmployeeKey ASC.Outputs[Sort Output]" />
             <path
-              refId="Package\DFT LoadDimStore.Paths[Sort Output3]"
-              endId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Inputs[Merge Join Right Input]"
+              refId="Package\Data Flow Task.Paths[Sort Output3]"
+              endId="Package\Data Flow Task\Merge Join BY ManagerKey.Inputs[Merge Join Left Input]"
               name="Sort Output"
-              startId="Package\DFT LoadDimStore\Sort Area BY GeographyKey ASC.Outputs[Sort Output]" />
+              startId="Package\Data Flow Task\Sort BY ManagerKey ASC.Outputs[Sort Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\E_SQL_T Truncate DimStoreReload"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{3270171D-D280-43EE-B0E8-55A5E383FB79}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="E_SQL_T Truncate DimStoreReload"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{1F18207F-3849-472F-916E-0F86601DA6C4}"
-          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[DimStoreReload];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
   </DTS:Executables>
-  <DTS:PrecedenceConstraints>
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint]"
-      DTS:CreationName=""
-      DTS:DTSID="{6B2A14FC-B14E-4C74-BE07-3DC34A0B1703}"
-      DTS:From="Package\E_SQL_T Truncate DimStoreReload"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint"
-      DTS:To="Package\DFT LoadDimStore" />
-  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -2462,88 +2290,58 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="245,42"
-          Id="Package\DFT LoadDimStore"
-          TopLeft="233,129" />
-        <NodeLayout
-          Size="245,42"
-          Id="Package\E_SQL_T Truncate DimStoreReload"
-          TopLeft="233,53" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="355.5,95">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,34"
-              Start="0,0"
-              End="0,26.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="151,42"
+          Id="Package\Data Flow Task"
+          TopLeft="414,212" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\DFT LoadDimStore">
+    design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="251,42"
-          Id="Package\DFT LoadDimStore\Load to StoreDB"
-          TopLeft="448,397" />
+          Id="Package\Data Flow Task\FFS Employee"
+          TopLeft="629,60.25" />
         <NodeLayout
           Size="251,42"
-          Id="Package\DFT LoadDimStore\FFS Employee"
-          TopLeft="678,48" />
+          Id="Package\Data Flow Task\Sort BY ManagerKey ASC"
+          TopLeft="198,270.25" />
         <NodeLayout
           Size="251,42"
-          Id="Package\DFT LoadDimStore\Sort BY ManagerKey ASC"
-          TopLeft="247,258" />
+          Id="Package\Data Flow Task\Merge Join BY ManagerKey"
+          TopLeft="398,341.25" />
         <NodeLayout
           Size="251,42"
-          Id="Package\DFT LoadDimStore\Merge Join BY ManagerKey"
-          TopLeft="447,329" />
+          Id="Package\Data Flow Task\Sort Store BY GeographyKey ASC"
+          TopLeft="60,125" />
         <NodeLayout
           Size="251,42"
-          Id="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC"
-          TopLeft="109,112.75" />
+          Id="Package\Data Flow Task\FFS Store"
+          TopLeft="61,60" />
         <NodeLayout
           Size="251,42"
-          Id="Package\DFT LoadDimStore\FFS Store"
-          TopLeft="110,47.75" />
+          Id="Package\Data Flow Task\Merge Join BY GeographyKey"
+          TopLeft="198,204.25" />
         <NodeLayout
           Size="251,42"
-          Id="Package\DFT LoadDimStore\Merge Join BY GeographyKey"
-          TopLeft="247,192" />
+          Id="Package\Data Flow Task\Sort Area BY GeographyKey ASC"
+          TopLeft="345,126" />
         <NodeLayout
           Size="251,42"
-          Id="Package\DFT LoadDimStore\Sort Area BY GeographyKey ASC"
-          TopLeft="394,113.75" />
+          Id="Package\Data Flow Task\FFS Area"
+          TopLeft="343,60" />
         <NodeLayout
           Size="251,42"
-          Id="Package\DFT LoadDimStore\FFS Area"
-          TopLeft="392,47.75" />
-        <NodeLayout
-          Size="251,42"
-          Id="Package\DFT LoadDimStore\Sort Employee BY EmployeeKey ASC"
-          TopLeft="677,114" />
+          Id="Package\Data Flow Task\Sort Employee BY EmployeeKey ASC"
+          TopLeft="628,126.25" />
         <EdgeLayout
-          Id="Package\DFT LoadDimStore.Paths[Sort Output3]"
-          TopLeft="519.5,155.75">
+          Id="Package\Data Flow Task.Paths[Sort Output]"
+          TopLeft="470.5,168">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2576,8 +2374,8 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT LoadDimStore.Paths[Sort Output2]"
-          TopLeft="234.5,154.75">
+          Id="Package\Data Flow Task.Paths[Sort Output1]"
+          TopLeft="185.5,167">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2610,8 +2408,8 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT LoadDimStore.Paths[Sort Output1]"
-          TopLeft="802.5,156">
+          Id="Package\Data Flow Task.Paths[Sort Output2]"
+          TopLeft="753.5,168.25">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2644,8 +2442,8 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT LoadDimStore.Paths[Sort Output]"
-          TopLeft="372.5,300">
+          Id="Package\Data Flow Task.Paths[Sort Output3]"
+          TopLeft="323.5,312.25">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2678,8 +2476,8 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT LoadDimStore.Paths[Merge Join Output1]"
-          TopLeft="372.5,234">
+          Id="Package\Data Flow Task.Paths[Merge Join Output]"
+          TopLeft="323.5,246.25">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2700,30 +2498,8 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT LoadDimStore.Paths[Merge Join Output]"
-          TopLeft="573,371">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,26"
-              Start="0,0"
-              End="0,18.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,18.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT LoadDimStore.Paths[Flat File Source Output2]"
-          TopLeft="235,89.75">
+          Id="Package\Data Flow Task.Paths[Flat File Source Output]"
+          TopLeft="186,102">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2744,8 +2520,8 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT LoadDimStore.Paths[Flat File Source Output1]"
-          TopLeft="803,90">
+          Id="Package\Data Flow Task.Paths[Flat File Source Output1]"
+          TopLeft="754,102.25">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2766,8 +2542,8 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT LoadDimStore.Paths[Flat File Source Output]"
-          TopLeft="518.5,89.75">
+          Id="Package\Data Flow Task.Paths[Flat File Source Output2]"
+          TopLeft="469.5,102">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2787,19 +2563,44 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="251,42"
+          Id="Package\Data Flow Task\DimStore_CurrentData"
+          TopLeft="922,59" />
+        <NodeLayout
+          Size="98,42"
+          Id="Package\Data Flow Task\Sort"
+          TopLeft="998,153" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="1047.25,101">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52"
+              Start="0,0"
+              End="0,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT LoadDimStore\Load to StoreDB">
+    design-time-name="Package\Data Flow Task\DimStore_CurrentData">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
