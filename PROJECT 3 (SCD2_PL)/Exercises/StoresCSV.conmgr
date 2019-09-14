@@ -17,10 +17,10 @@
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
           DTS:ColumnDelimiter="_x003B_"
-          DTS:DataType="18"
+          DTS:DataType="3"
           DTS:TextQualified="True"
           DTS:ObjectName="StoreBusinessId"
-          DTS:DTSID="{BA7E3BB9-D2F7-4568-90F5-2629CA5EAB1E}"
+          DTS:DTSID="{BEFD2686-E197-45AD-8403-9F8045F9B0BF}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -29,7 +29,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="StoreName"
-          DTS:DTSID="{809A7334-A36B-4491-84EA-0371231FC78A}"
+          DTS:DTSID="{29D1C1B1-57B8-4CC6-B0F8-86C65045F65A}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -38,7 +38,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="StoreDescription"
-          DTS:DTSID="{CB0F93F6-32A7-40A3-97E9-D0EC3A21654A}"
+          DTS:DTSID="{20DA3272-DC13-46BD-B0FD-3DD3B9460E27}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -47,7 +47,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="Status"
-          DTS:DTSID="{B4A645DD-D610-4BBB-9051-4842D1D5C31E}"
+          DTS:DTSID="{E4AA0574-6856-480F-B739-DC71F7BFFA6E}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -55,7 +55,7 @@
           DTS:DataType="19"
           DTS:TextQualified="True"
           DTS:ObjectName="ManagerKey"
-          DTS:DTSID="{EFB85FA3-AA28-4326-A9B2-48614F464DA0}"
+          DTS:DTSID="{8057009F-3809-4C67-A349-7A7D968E95D2}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -63,7 +63,7 @@
           DTS:DataType="19"
           DTS:TextQualified="True"
           DTS:ObjectName="GeographyKey"
-          DTS:DTSID="{070229E1-C980-48D6-B895-6CFA183340B9}"
+          DTS:DTSID="{516C129B-A876-4702-8CA5-F886708A18F3}"
           DTS:CreationName="" />
       </DTS:FlatFileColumns>
     </DTS:ConnectionManager>

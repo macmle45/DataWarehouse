@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="01_LoadDimStore"
   DTS:PackageType="5"
-  DTS:VersionBuild="26"
-  DTS:VersionGUID="{85A95CAD-1708-4B68-BFDA-9C8C7D6BD3CF}">
+  DTS:VersionBuild="29"
+  DTS:VersionGUID="{6603453B-0E12-4F88-9DCC-F4288A8CE924}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -438,7 +438,7 @@
                   <outputColumns>
                     <outputColumn
                       refId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].Columns[StoreBusinessId]"
-                      dataType="ui2"
+                      dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].ExternalColumns[StoreBusinessId]"
@@ -567,7 +567,7 @@
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].ExternalColumns[StoreBusinessId]"
-                      dataType="ui2"
+                      dataType="i4"
                       name="StoreBusinessId" />
                     <externalMetadataColumn
                       refId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].ExternalColumns[StoreName]"
@@ -756,7 +756,7 @@
                       lineageId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[RegionCountryName]" />
                     <inputColumn
                       refId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].Columns[StoreBusinessId]"
-                      cachedDataType="ui2"
+                      cachedDataType="i4"
                       cachedName="StoreBusinessId"
                       externalMetadataColumnId="Package\DFT LoadDimStore\Load to StoreDB.Inputs[OLE DB Destination Input].ExternalColumns[StoreBusinessId]"
                       lineageId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[StoreBusinessId]" />
@@ -933,7 +933,7 @@
                       lineageId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[GeographyKey]" />
                     <inputColumn
                       refId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Inputs[Merge Join Left Input].Columns[StoreBusinessId]"
-                      cachedDataType="ui2"
+                      cachedDataType="i4"
                       cachedName="StoreBusinessId"
                       lineageId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[StoreBusinessId]" />
                     <inputColumn
@@ -1015,7 +1015,7 @@
                   <outputColumns>
                     <outputColumn
                       refId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StoreBusinessId]"
-                      dataType="ui2"
+                      dataType="i4"
                       lineageId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StoreBusinessId]"
                       name="StoreBusinessId">
                       <properties>
@@ -1217,7 +1217,7 @@
                       lineageId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[RegionCountryName]" />
                     <inputColumn
                       refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Inputs[Merge Join Left Input].Columns[StoreBusinessId]"
-                      cachedDataType="ui2"
+                      cachedDataType="i4"
                       cachedName="StoreBusinessId"
                       lineageId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[StoreBusinessId]" />
                     <inputColumn
@@ -1392,7 +1392,7 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[StoreBusinessId]"
-                      dataType="ui2"
+                      dataType="i4"
                       lineageId="Package\DFT LoadDimStore\Merge Join BY ManagerKey.Outputs[Merge Join Output].Columns[StoreBusinessId]"
                       name="StoreBusinessId">
                       <properties>
@@ -1750,7 +1750,7 @@
                     </inputColumn>
                     <inputColumn
                       refId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Inputs[Sort Input].Columns[StoreBusinessId]"
-                      cachedDataType="ui2"
+                      cachedDataType="i4"
                       cachedName="StoreBusinessId"
                       lineageId="Package\DFT LoadDimStore\Merge Join BY GeographyKey.Outputs[Merge Join Output].Columns[StoreBusinessId]">
                       <properties>
@@ -1906,7 +1906,7 @@
                     </outputColumn>
                     <outputColumn
                       refId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[StoreBusinessId]"
-                      dataType="ui2"
+                      dataType="i4"
                       lineageId="Package\DFT LoadDimStore\Sort BY ManagerKey ASC.Outputs[Sort Output].Columns[StoreBusinessId]"
                       name="StoreBusinessId">
                       <properties>
@@ -2173,7 +2173,7 @@
                   <inputColumns>
                     <inputColumn
                       refId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Inputs[Sort Input].Columns[StoreBusinessId]"
-                      cachedDataType="ui2"
+                      cachedDataType="i4"
                       cachedName="StoreBusinessId"
                       lineageId="Package\DFT LoadDimStore\FFS Store.Outputs[Flat File Source Output].Columns[StoreBusinessId]">
                       <properties>
@@ -2285,7 +2285,7 @@
                   <outputColumns>
                     <outputColumn
                       refId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[StoreBusinessId]"
-                      dataType="ui2"
+                      dataType="i4"
                       lineageId="Package\DFT LoadDimStore\Sort Store BY GeographyKey ASC.Outputs[Sort Output].Columns[StoreBusinessId]"
                       name="StoreBusinessId">
                       <properties>

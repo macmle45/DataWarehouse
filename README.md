@@ -86,6 +86,8 @@ GO
 USE [StoreDB]
 GO
 
+DROP TABLE IF EXISTS [dbo].[DimStoreReload];
+
 CREATE TABLE [DimStoreReload] (
     [StoreKey] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
     [FirstName] varchar(50),
@@ -110,5 +112,24 @@ CREATE TABLE [DimStoreReload] (
 USE [StoreDB]
 GO
 
+DROP TABLE IF EXISTS [dbo].[DimStoreSCD2];
 
+CREATE TABLE [dbo].[DimStoreSCD2] (
+	[StoreKey] int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    [FirstName] varchar(50),
+    [LastName] varchar(50),
+    [Title] varchar(50),
+    [ContinentName] varchar(50),
+    [CityName] varchar(50),
+    [StateProvinceName] varchar(50),
+    [RegionCountryName] varchar(50),
+    [StoreBusinessId] int,
+    [StoreName] varchar(50),
+    [StoreDescription] varchar(50),
+    [Status] varchar(50),
+	[DateFrom] datetime NULL,
+	[DateTo] datetime NULL	DEFAULT (NULL),
+	[Tech_LoadDate] datetime NULL DEFAULT (GETDATE()),
+	[Tech_LoadUser] varchar(100) NULL DEFAULT (SUSER_SNAME())
+)
 ```
