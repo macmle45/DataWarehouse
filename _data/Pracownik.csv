@@ -5,7 +5,7 @@ EmployeeKey;FirstName;LastName;Title
 4;Kirk;Nason;Sales Region Manager
 5;Humberto;Acevedo;Sales Region Manager
 6;Yoichiro;Okada;Sales State Manager
-7;Pilar;Ackerman;Sales State Manager
+7;Pilar;Ackerman Goldberg;Sales State Manager
 8;Aaron;Painter;Sales State Manager
 9;Terry;Adams;Sales State Manager
 10;David;Probst;Sales State Manager
@@ -278,14 +278,14 @@ EmployeeKey;FirstName;LastName;Title
 280;Eric;Gruber;Sales Store Manager
 281;Inbar;Gazit;Sales Store Manager
 282;Seth;Grossman;Sales Store Manager
-283;Christa;Geller;Sales Store Manager
+
 284;Carlos;Grilo;Sales Store Manager
 285;Tom;Getzinger;Sales Store Manager
 286;Kirk;Gregersen;Sales Store Manager
 287;Leo;Giakoumakis;Sales Store Manager
 288;Nikolay;Grachev;Sales Store Manager
 289;Enrique;Gil;Sales Store Manager
-290;Mojca;Gostincar;Sales Store Manager
+
 291;Eric;Gilmore;Sales Store Manager
 292;Nuria;Gonzalez;Sales Store Manager
 293;Stuart;Glasson;Sales Store Manager

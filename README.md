@@ -133,3 +133,26 @@ CREATE TABLE [dbo].[DimStoreSCD2] (
 	[Tech_LoadUser] varchar(100) NULL DEFAULT (SUSER_SNAME())
 )
 ```
+
+* create table [LoadLogger]
+
+```sql
+USE [StoreDB]
+GO
+
+DROP TABLE IF EXISTS [dbo].[LoadLogger];
+
+CREATE TABLE [dbo].[LoadLogger]
+(
+	[LogId]			INT IDENTITY	NOT NULL PRIMARY KEY
+,	[LogDate]		DATETIME		NOT NULL DEFAULT GETDATE()
+,	[User]			VARCHAR(200)	NOT NULL DEFAULT SUSER_SNAME()
+,	[Host]			VARCHAR(200)	NOT NULL DEFAULT HOST_NAME()
+,	[RCAll]			INT NOT NULL
+,	[RCInsert]		INT NOT NULL
+,	[RCUpdate]		INT NOT NULL
+,	[RCDelete]		INT NOT NULL
+,	[RCNoAction]	INT NOT NULL
+,	[ISRCSumCorrect] AS CASE WHEN [RCAll] = [RCInsert] + [RCUpdate] + [RCDelete] + [RCNoAction] THEN 1 ELSE 0 END 
+)
+```
